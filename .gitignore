@@ -6,7 +6,7 @@ logs
 pids
 *.pid
 *.seed
-
+.idea
 # Coverage directory used by tools like istanbul
 coverage
 
@@ -21,3 +21,4 @@ manifest.json
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
+/assets
