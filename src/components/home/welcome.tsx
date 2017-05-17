@@ -3,9 +3,11 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { getNextTitle } from '../../actions/titles';
+import {object} from "../../helpers";
 
 interface IConnectedProps {
   getNextTitle?: any;
+  dispatch?: any;
 }
 
 // Welcome component
@@ -30,6 +32,7 @@ export class Welcome extends Component<IProps, IState> {
   }
 
   public componentDidMount() {
+    console.log(this.props);
     this.interval = setInterval(() => {
       const { getNextTitle, title } = this.props;
       getNextTitle(title);
@@ -54,16 +57,14 @@ export class Welcome extends Component<IProps, IState> {
 }
 
 // State to props for connect argument
-export const mapStateToProps = (state: any): IProps => {
+const mapStateToProps = (state: any): IProps => {
   return {
     title: state.titleReducer.title,
   };
 };
 
 // Dispatch to props for connect argument
-const mapDispatchToProps = {
-  getNextTitle,
-};
+const mapDispatchToProps = {getNextTitle};
 
 // Conect the component with Redux
 export default connect(

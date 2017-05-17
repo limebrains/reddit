@@ -1,14 +1,13 @@
 import * as titleActions from './titles';
 import axios from 'axios';
-export { titleActions };
-import { Component } from 'react';
+export {titleActions};
+import {Component} from 'react';
 
-const ROOT_URL = 'http://reddit.com/';
+const ROOT_URL = 'https://www.reddit.com';
 export const SEARCH_SUBREDDITS = 'search_subreddits';
 
-export default function searchForSubreddits(text) {
-
-    const url = `${ROOT_URL}/subreddits/search.json/?q=${text}`;
+export const searchForSubreddits = (text: string = "all") => {
+    const url = `${ROOT_URL}/search.json?q=subreddit%3A${text}`;
     const request = axios.get(url);
 
     return {
@@ -16,5 +15,4 @@ export default function searchForSubreddits(text) {
         payload: request
     };
 
-
-}
+};

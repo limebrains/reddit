@@ -2,15 +2,16 @@ import * as React from 'react';
 import { StatelessComponent } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import searchForSubreddits from '../../actions';
+import SearchSubreddits from "./searching";
 
-const indexPage: StatelessComponent<any> = (): any => {
+
+const IndexPage: StatelessComponent<any> = (): any => {
   return (
     <div>
-        <h1>Hello Boilerplate!</h1>
+        < SearchSubreddits />
         <Link to="/home">Home</Link>
     </div>
       );
 };
 
-export default indexPage;
+export default IndexPage;

@@ -15,7 +15,8 @@ import config from './config';
 /* Components */
 import { Layout, NotFound } from './components';
 import { Home } from './components/home';
-import { indexPage } from './components/index_search_page';
+import IndexPage from "./components/index_search_page/layout";
+
 
 /* Routes */
 const { urlPrefix } = config;
@@ -24,8 +25,8 @@ const Routes: StatelessComponent<any> = (): any => {
     <Provider store={ store }>
       <Router history={ history }>
 
-          <Route path={urlPrefix} component={ Layout }>
-              <IndexRoute component={indexPage} />
+          <Route path={urlPrefix}>
+              <IndexRoute component={IndexPage} />
               <Route path="/home" component={ Home } />
           </Route>
           <Route path="*" component={ NotFound } />
