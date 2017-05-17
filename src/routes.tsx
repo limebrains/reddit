@@ -16,6 +16,8 @@ import config from './config';
 import { Layout, NotFound } from './components';
 import { Home } from './components/home';
 import IndexPage from "./components/index_search_page/layout";
+import Login from "./components/index_search_page/login";
+
 
 
 /* Routes */
@@ -27,6 +29,7 @@ const Routes: StatelessComponent<any> = (): any => {
 
           <Route path={urlPrefix}>
               <IndexRoute component={IndexPage} />
+              <Route path="/login" component={ Login } />
               <Route path="/home" component={ Home } />
           </Route>
           <Route path="*" component={ NotFound } />

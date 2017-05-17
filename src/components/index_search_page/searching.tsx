@@ -51,12 +51,12 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
     }
 
     public render() {
-        return(<div className="row">
-            <form className="col-lg-12" >
-                <input type="text" className="col-lg-12" style={{width:"100%"}} value={this.state.input} onChange={e => this.handleChange(e)} />
-            </form>
+        return(<div className="row justify-content-md-center">
             <h2>Hello {this.state.input}!</h2>
-
+            <form className="form-group col-sm-4 col-sm-offset-2" >
+                <input type="text" className="col-sm-4 col-sm-offset-2" style={{width:"80%", height:'20px'}} value={this.state.input} onChange={e => this.handleChange(e)} />
+            </form>
+            <br/>
         </div>);
     }
 
