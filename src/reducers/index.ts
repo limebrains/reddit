@@ -1,2 +1,4 @@
 import { titleReducer } from './titles';
-export { titleReducer };
+import {subreddits} from "./reducer_subreddits_search";
+
+export { titleReducer, subreddits };

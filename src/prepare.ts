@@ -3,6 +3,7 @@ declare var window: any;
 /* Redux */
 import { routerReducer, syncHistoryWithStore } from 'react-router-redux';
 import { applyMiddleware, combineReducers, compose, createStore  } from 'redux';
+const reduxLogger = require('redux-logger');
 
 /* React Router */
 import * as reactRouter from 'react-router';
@@ -19,12 +20,14 @@ const reducer = combineReducers({
   ...reducers,
 });
 
+const logger = reduxLogger.createLogger({});
+
 /* Initial the store */
 function configureStore(initialState: any): any {
   // Initial the redux devtools for Chrome
   // https://github.com/zalmoxisus/redux-devtools-extension/
   const createdStore = createStore(reducer, initialState, compose(
-    applyMiddleware(),
+    applyMiddleware(logger),
     window.devToolsExtension ? window.devToolsExtension() : (f: any) => f
   ));
 
@@ -33,9 +36,11 @@ function configureStore(initialState: any): any {
     // Enable Webpack hot module replacement for reducers
     hot.accept('./reducers', () => {
       const titleReducer = require('./reducers/titles');
+      const subreddits = require('./reducers/reducer_subreddits_search');
       const nextReducer = combineReducers({
         routing: routerReducer,
         titleReducer,
+        subreddits,
       });
       createdStore.replaceReducer(nextReducer);
     });

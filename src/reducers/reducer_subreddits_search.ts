@@ -1,12 +1,16 @@
-import { SEARCH_SUBREDDITS} from '../actions/index';
+import { SEARCH_SUBREDDITS_SUCCESS } from '../actions/index';
 
-export default function(state = [], action) {
+const initialState = {};
+
+const subreddits = (state = initialState, action: any) => {
   switch (action.type) {
-    case SEARCH_SUBREDDITS:
-      console.log(action.payload.data);
-      return [action.payload.data, ...state];
-
+    case SEARCH_SUBREDDITS_SUCCESS:
+      return {...state, ...action.payload.data.data.children};
+    default:
+      return state
   }
+};
 
-  return state;
-}
+export {
+  subreddits,
+};
