@@ -34,11 +34,8 @@ $linkhover: #94c;
 }
 
 
-.custom-search-form .search-query {
-  padding-right: 3px;
-  padding-right: 4px \9;
-  padding-left: 3px;
-  padding-left: 4px \9;
+.custom-search-form .search-query .custom-list {
+  padding: 10px;
   /* IE7-8 doesn't have border-radius, so don't indent the padding */
 
   margin-bottom: 0;
@@ -50,3 +47,4 @@ $linkhover: #94c;
   -o-transition: width  0.2s ease-in-out;
   transition: width  0.2s ease-in-out;
 }
+

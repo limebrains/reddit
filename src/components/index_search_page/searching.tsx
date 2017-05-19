@@ -70,35 +70,28 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
     private renderSubreddit = (subreddit: ISubreddit, index: number) => {
         return (
             <li key={index} onClick={e => this.openSubreddit(e)}>
-                {subreddit.data.display_name_prefixed}
-                <br/>
-                <small>{subreddit.data.public_description}</small>
+                <div className="custom-list">
+                    {subreddit.data.display_name_prefixed}
+                    <br/>
+                    <small>{subreddit.data.public_description}</small>
+                </div>
             </li>
         )
     };
 
     public render() {
         return(
-
             <div className="container-fluid">
-                <div className="row">
-                    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4" >
-                        <form className="form-group">
-                            <input type="text" className="search-query mac-style" style={{height: '30px', width:'100%', fontSize: '18px'}} value={this.state.input} onChange={e => this.handleChange(e)} />
-                        </form>
-                    </div>
-                    <div className="col-lg-7"></div>
-                </div>
-
-
-                <div className="row">
-                    <div className="col-12 col-md-auto">
-                        <ul>
-                            {this.props.subreddits.data && this.props.subreddits.data.map((subreddit: ISubreddit, index: number) => {
-                                return this.renderSubreddit(subreddit, index);
-                            })}
-                        </ul>
-                    </div></div></div>);
+                <div className="row col-xs-3">
+                    <form className="form-group">
+                        <input type="text" className="search-query mac-style" style={{height: '30px', width:'100%', fontSize: '18px'}} value={this.state.input} onChange={e => this.handleChange(e)} />
+                    </form>
+                    <ul>
+                        {this.props.subreddits.data && this.props.subreddits.data.map((subreddit: ISubreddit, index: number) => {
+                            return this.renderSubreddit(subreddit, index);
+                        })}
+                    </ul>
+                </div></div>);
     }
 
 }
