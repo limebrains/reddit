@@ -2,8 +2,6 @@ $linkhormal: #39c;
 $linkhover: #94c;
 
 .container {
-  margin: 0 auto;
-  width: 860px;
 
   header {
     float: left;
@@ -33,4 +31,22 @@ $linkhover: #94c;
     padding-bottom: 50px;
     width: 500px;
   }
+}
+
+
+.custom-search-form .search-query {
+  padding-right: 3px;
+  padding-right: 4px \9;
+  padding-left: 3px;
+  padding-left: 4px \9;
+  /* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: width  0.2s ease-in-out;
+  -moz-transition:width  0.2s ease-in-out;
+  -o-transition: width  0.2s ease-in-out;
+  transition: width  0.2s ease-in-out;
 }

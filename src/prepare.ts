@@ -4,6 +4,7 @@ declare var window: any;
 import { routerReducer, syncHistoryWithStore } from 'react-router-redux';
 import { applyMiddleware, combineReducers, compose, createStore  } from 'redux';
 const reduxLogger = require('redux-logger');
+const reduxPromise = require('redux-promise');
 
 /* React Router */
 import * as reactRouter from 'react-router';
@@ -28,6 +29,7 @@ function configureStore(initialState: any): any {
   // https://github.com/zalmoxisus/redux-devtools-extension/
   const createdStore = createStore(reducer, initialState, compose(
     applyMiddleware(logger),
+      applyMiddleware(reduxPromise),
     window.devToolsExtension ? window.devToolsExtension() : (f: any) => f
   ));
 

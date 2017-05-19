@@ -1,25 +1,33 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { searchForSubreddits } from '../../actions/index';
+import { searchForSubreddits } from '../../actions/searching_page';
+
+interface ISubreddit {
+    data: any;
+    kind: string;
+}
+
+interface ISubreddits {
+    data: ISubreddit[];
+}
 
 interface IProps {
     text?: string;
     searchForSubreddits?: any;
-    subreddits?: any[];
+    subreddits?: ISubreddits;
     dispatch?: any;
 }
 
 interface IState {
     mounted: boolean;
     input?: string;
-
 }
 
 const mapStateToProps = (state: any): IProps => {
-  return {
-      text: state.text || "",
-      subreddits: state.subreddits,
-  };
+    return {
+        text: state.text || "",
+        subreddits: state.subreddits,
+    };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
@@ -37,7 +45,6 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
         };
 
         //this.handleChange = this.handleChange.bind(this);
-        console.log(props);
     }
 
 
@@ -50,36 +57,48 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
 
     }
 
+    public openSubreddit(event:any){
+        console.log(event);
+    }
+
     public handleChange(event: any) : void{
         const value = event.target.value;
         this.setState({input: value});
         this.props.dispatch(searchForSubreddits(value, this.props.dispatch));
+        console.log(this.props.subreddits);
     }
-    private renderSubreddit = (subreddit: any, index: number) => {
-      return (
-          <li key={index}>
-              {subreddit.data.subreddit}
-              <br/>
-              <small>{subreddit.data.title}</small>
-          </li>
-      )
+    private renderSubreddit = (subreddit: ISubreddit, index: number) => {
+        return (
+            <li key={index} onClick={e => this.openSubreddit(e)}>
+                {subreddit.data.display_name_prefixed}
+                <br/>
+                <small>{subreddit.data.public_description}</small>
+            </li>
+        )
     };
 
     public render() {
-        return(<div className="row justify-content-md-center">
-            <h2>Hello {this.state.input}!</h2>
-            <form className="form-group col-sm-4 col-sm-offset-2" >
-                <input type="text" className="col-sm-4 col-sm-offset-2" style={{width:"80%", height:'20px'}} value={this.state.input} onChange={e => this.handleChange(e)} />
-            </form>
-            <hr/>
-            <ul>
-                {this.props.subreddits[0] && Object.keys(this.props.subreddits).map((key: any, index: number) => {
-                    const subreddit = this.props.subreddits[key];
-                    return this.renderSubreddit(subreddit, index);
-                })}
-            </ul>
-            <hr/>
-        </div>);
+        return(
+
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4" >
+                        <form className="form-group">
+                            <input type="text" className="search-query mac-style" style={{height: '30px', width:'100%', fontSize: '18px'}} value={this.state.input} onChange={e => this.handleChange(e)} />
+                        </form>
+                    </div>
+                    <div className="col-lg-7"></div>
+                </div>
+
+
+                <div className="row">
+                    <div className="col-12 col-md-auto">
+                        <ul>
+                            {this.props.subreddits.data && this.props.subreddits.data.map((subreddit: ISubreddit, index: number) => {
+                                return this.renderSubreddit(subreddit, index);
+                            })}
+                        </ul>
+                    </div></div></div>);
     }
 
 }

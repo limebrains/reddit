@@ -19,7 +19,6 @@ import IndexPage from "./components/index_search_page/layout";
 import Login from "./components/index_search_page/login";
 
 
-
 /* Routes */
 const { urlPrefix } = config;
 const Routes: StatelessComponent<any> = (): any => {

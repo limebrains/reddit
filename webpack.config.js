@@ -28,7 +28,11 @@ module.exports = {
       sourceType: 'var'
     }),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+          $: "jquery",
+          jQuery: "jquery"
+      })
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
@@ -47,8 +51,8 @@ module.exports = {
         loader: 'json'
       },
       {
-        test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
-        loader: 'url'
+        test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.woff2$|\.eot$|\.ttf$|\.wav$|\.mp3$/,
+        loader: 'url-loader'
       },
       {
         test: /\.js$/,
