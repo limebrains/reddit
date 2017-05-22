@@ -16,20 +16,20 @@ interface IProps {
     searchForSubreddits?: any;
     subreddits?: ISubreddits;
     dispatch?: any;
-    isVisible: boolean;
+    isVisible?: boolean;
 }
 
 interface IState {
     mounted: boolean;
     input?: string;
-    isVisible: boolean;
+    isVisible?: boolean;
 }
 
 const mapStateToProps = (state: any): IProps => {
     return {
         text: state.text || "",
         subreddits: state.subreddits,
-        isVisible: true,
+        isVisible: state.isVisible,
     };
 };
 
@@ -43,9 +43,9 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            mounted: false,
             input: '',
             isVisible: true,
+            mounted: false,
         };
 
         //this.handleChange = this.handleChange.bind(this);
@@ -83,7 +83,7 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
         )
     }
 
-    private HideSearchPanel() {
+    public HideSearchPanel() {
         this.setState({isVisible: false});
 
 }
@@ -103,11 +103,10 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
                             </div></div>
 
                             <ul>
-
-                                {this.props.subreddits.data && this.props.subreddits.data.map((subreddit: ISubreddit, index: number) => {
+                                {this.props.subreddits.data && this.props.subreddits.data.map(
+                                    (subreddit: ISubreddit, index: number) => {
                                     return this.renderSubreddit(subreddit, index);
                                 })}
-
                             </ul>
                     </div></div>
         );
