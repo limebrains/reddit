@@ -7,7 +7,7 @@ import SearchSubreddits from "./searching";
 
 const IndexPage: StatelessComponent<any> = (): any => {
   return (
-    <div>
+    <div className="page-container">
         < SearchSubreddits />
         <Link to="/home">Home</Link>
     </div>

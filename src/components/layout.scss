@@ -33,6 +33,10 @@ $linkhover: #94c;
   }
 }
 
+.page-container{
+  background-color: #eee !important;
+}
+
 
 .custom-search-form .search-query .custom-list {
   padding: 10px;
@@ -46,5 +50,24 @@ $linkhover: #94c;
   -moz-transition:width  0.2s ease-in-out;
   -o-transition: width  0.2s ease-in-out;
   transition: width  0.2s ease-in-out;
+}
+
+
+ul{
+  list-style: none;
+}
+
+.pt {
+  padding-top: 10px;
+}
+
+.pall {
+  padding: 10px 20px 10px 20px !important;
+}
+
+.search-panel{
+  background: #fff;
+  margin: 10px 30px 25px 25px !important;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.16);
 }
 

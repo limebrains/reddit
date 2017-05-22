@@ -69,29 +69,41 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
     }
     private renderSubreddit = (subreddit: ISubreddit, index: number) => {
         return (
-            <li key={index} onClick={e => this.openSubreddit(e)}>
-                <div className="custom-list">
-                    {subreddit.data.display_name_prefixed}
-                    <br/>
-                    <small>{subreddit.data.public_description}</small>
-                </div>
-            </li>
+            <div className="row search-panel pall">
+                <li key={index} onClick={e => this.openSubreddit(e)}>
+                    <div className="custom-list">
+                        {subreddit.data.display_name_prefixed}
+                        <br/>
+                        <small>{subreddit.data.public_description}</small>
+                    </div>
+                </li>
+            </div>
         )
     };
 
     public render() {
         return(
             <div className="container-fluid">
-                <div className="row col-xs-3">
-                    <form className="form-group">
-                        <input type="text" className="search-query mac-style" style={{height: '30px', width:'100%', fontSize: '18px'}} value={this.state.input} onChange={e => this.handleChange(e)} />
-                    </form>
-                    <ul>
-                        {this.props.subreddits.data && this.props.subreddits.data.map((subreddit: ISubreddit, index: number) => {
-                            return this.renderSubreddit(subreddit, index);
-                        })}
-                    </ul>
-                </div></div>);
+                <div className="row col-xs-4 pall pleft">
+                    <div className="row search-panel pall">
+                        <div className="pall col-xs-1 col-xs-offset-11">
+                            <button type="button" className="btn" id="search-btn">×</button>
+                        </div>
+                        <div className="row col-xs-11">
+                            <form className="form-group">
+                                <input type="text" className="search-query mac-style" style={{height: '30px', width:'100%', fontSize: '18px'}} value={this.state.input} onChange={e => this.handleChange(e)} />
+                            </form>
+                            </div></div>
+
+                            <ul>
+
+                                {this.props.subreddits.data && this.props.subreddits.data.map((subreddit: ISubreddit, index: number) => {
+                                    return this.renderSubreddit(subreddit, index);
+                                })}
+
+                            </ul>
+                    </div></div>
+        );
     }
 
 }
