@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { searchForSubreddits } from '../../actions/searching_page';
+import { hideSearchpanel, searchForSubreddits } from '../../actions/searching_page';
 
 interface ISubreddit {
     data: any;
@@ -16,17 +16,20 @@ interface IProps {
     searchForSubreddits?: any;
     subreddits?: ISubreddits;
     dispatch?: any;
+    isVisible: boolean;
 }
 
 interface IState {
     mounted: boolean;
     input?: string;
+    isVisible: boolean;
 }
 
 const mapStateToProps = (state: any): IProps => {
     return {
         text: state.text || "",
         subreddits: state.subreddits,
+        isVisible: true,
     };
 };
 
@@ -41,7 +44,8 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
         super(props);
         this.state = {
             mounted: false,
-            input: ''
+            input: '',
+            isVisible: true,
         };
 
         //this.handleChange = this.handleChange.bind(this);
@@ -53,20 +57,18 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
         const {
             searchForSubreddits
         } = this.props;
-
-
     }
 
-    public openSubreddit(event:any){
+    public openSubreddit(event: any) {
         console.log(event);
     }
 
-    public handleChange(event: any) : void{
+    public handleChange(event: any): void {
         const value = event.target.value;
         this.setState({input: value});
         this.props.dispatch(searchForSubreddits(value, this.props.dispatch));
-        console.log(this.props.subreddits);
     }
+
     private renderSubreddit = (subreddit: ISubreddit, index: number) => {
         return (
             <div className="row search-panel pall">
@@ -79,7 +81,12 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
                 </li>
             </div>
         )
-    };
+    }
+
+    private HideSearchPanel() {
+        this.setState({isVisible: false});
+
+}
 
     public render() {
         return(
@@ -87,7 +94,7 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
                 <div className="row col-xs-4 pall pleft">
                     <div className="row search-panel pall">
                         <div className="pall col-xs-1 col-xs-offset-11">
-                            <button type="button" className="btn" id="search-btn">×</button>
+                            <button type="button" className="btn" id="search-btn" onClick={this.HideSearchPanel}>×</button>
                         </div>
                         <div className="row col-xs-11">
                             <form className="form-group">
