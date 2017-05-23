@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { hideSearchpanel, searchForSubreddits } from '../../actions/searching_page';
+const CSSTransitionGroup = require('react-transition-group/CSSTransitionGroup')
 
 interface ISubreddit {
     data: any;
@@ -29,7 +30,7 @@ const mapStateToProps = (state: any): IProps => {
     return {
         text: state.text || "",
         subreddits: state.subreddits,
-        isVisible: state.isVisible,
+        isVisible: state.isVisible || true,
     };
 };
 
@@ -48,7 +49,9 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
             mounted: false,
         };
 
-        //this.handleChange = this.handleChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.changeVisibilityOfSearchPanel = this.changeVisibilityOfSearchPanel.bind(this);
+        this.renderSearchPanel = this.renderSearchPanel.bind(this);
     }
 
 
@@ -57,11 +60,17 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
         const {
             searchForSubreddits
         } = this.props;
+
     }
 
     public openSubreddit(event: any) {
         console.log(event);
     }
+
+    public changeVisibilityOfSearchPanel() {
+        this.setState({isVisible: !this.state.isVisible});
+    }
+
 
     public handleChange(event: any): void {
         const value = event.target.value;
@@ -70,9 +79,12 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
     }
 
     private renderSubreddit = (subreddit: ISubreddit, index: number) => {
+
+        const boundSubClick = this.onItemClick.bind(this, subreddit);
         return (
             <div className="row search-panel pall">
-                <li key={index} onClick={e => this.openSubreddit(e)}>
+
+                <li key={index} onClick={boundSubClick}>
                     <div className="custom-list">
                         {subreddit.data.display_name_prefixed}
                         <br/>
@@ -83,32 +95,45 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
         )
     }
 
-    public HideSearchPanel() {
-        this.setState({isVisible: false});
+    private onItemClick(item:any, event:any) {
+        console.log(item);
+    }
 
-}
+    public renderSearchPanel() {
+        return (
+            <div className="row col-xs-3 pall pleft">
+                    <div className="row">
+                        <div className="row search-panel pall ptop">
+                            <form className="form-group">
+                                <input type="text" className="search-query mac-style" style={{height: '30px', width:'100%', fontSize: '18px'}} value={this.state.input} onChange={e => this.handleChange(e)} />
+                            </form>
+                        </div>
+                    </div>
+                    <ul>
+                        {this.props.subreddits.data && this.props.subreddits.data.map(
+                            (subreddit: ISubreddit, index: number) => {
+                                return this.renderSubreddit(subreddit, index);
+                            })}
+                    </ul>
+                </div>
+
+        );
+    }
+
 
     public render() {
         return(
             <div className="container-fluid">
-                <div className="row col-xs-4 pall pleft">
-                    <div className="row search-panel pall">
-                        <div className="pall col-xs-1 col-xs-offset-11">
-                            <button type="button" className="btn" id="search-btn" onClick={this.HideSearchPanel}>×</button>
-                        </div>
-                        <div className="row col-xs-11">
-                            <form className="form-group">
-                                <input type="text" className="search-query mac-style" style={{height: '30px', width:'100%', fontSize: '18px'}} value={this.state.input} onChange={e => this.handleChange(e)} />
-                            </form>
-                            </div></div>
-
-                            <ul>
-                                {this.props.subreddits.data && this.props.subreddits.data.map(
-                                    (subreddit: ISubreddit, index: number) => {
-                                    return this.renderSubreddit(subreddit, index);
-                                })}
-                            </ul>
-                    </div></div>
+                <CSSTransitionGroup
+                    transitionName="searchPanelAnim"
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={500}>
+                    {this.state.isVisible && <this.renderSearchPanel />}
+                    <div className="col-xs-1">
+                        <button type="button" className="btn" id="search-btn" onClick={this.changeVisibilityOfSearchPanel}>×</button>
+                    </div>
+                </CSSTransitionGroup>
+            </div>
         );
     }
 

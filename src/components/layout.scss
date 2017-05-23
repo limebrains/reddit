@@ -57,17 +57,33 @@ ul{
   list-style: none;
 }
 
-.pt {
-  padding-top: 10px;
+.ptop {
+  padding-top: 20px !important;
 }
 
 .pall {
-  padding: 10px 20px 10px 20px !important;
+  padding: 10px 20px 10px 20px;
 }
 
 .search-panel{
   background: #fff;
   margin: 10px 30px 25px 25px !important;
   box-shadow: 0 1px 5px rgba(0,0,0,0.16);
+  margin-top: 25px;
 }
 
+.searchPanelAnim {
+  opacity: 0.01;
+  width: 0;
+}
+
+
+.searchPanelAnim-enter.searchPanelAnim-enter-active{
+  transition: 500ms ease-in-out;
+}
+
+.searchPanelAnim-leave.searchPanelAnim-leave-active{
+  transition: 500ms ease-in-out;
+  opacity: 0.01;
+  width: 0;
+}
