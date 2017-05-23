@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
 import { authorization } from '../../actions/searching_page';
+import { connect } from 'react-redux';
+import * as React from 'react';
 
 interface IProps {
     authorization?: any;
@@ -15,8 +15,6 @@ interface IState {
 
 const mapDispatchToProps = {authorization};
 
-
-
 @(connect(null, mapDispatchToProps) as any)
 export default class Login extends React.Component<IProps, IState> {
 
@@ -24,8 +22,8 @@ export default class Login extends React.Component<IProps, IState> {
         super(props);
         this.state = {
             mounted: false,
-            username: "",
-            password: ""
+            password: '',
+            username: '',
         };
 
         this.handleChange = this.handleChange.bind(this);

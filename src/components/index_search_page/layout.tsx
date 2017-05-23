@@ -1,9 +1,8 @@
-import * as React from 'react';
-import { StatelessComponent } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import SearchSubreddits from "./searching";
-
+import { Link } from 'react-router';
+import * as React from 'react';
+import SearchSubreddits from './searching';
+import { StatelessComponent } from 'react';
 
 const IndexPage: StatelessComponent<any> = (): any => {
   return (

@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { getNextTitle } from '../../actions/titles';
-import {object} from "../../helpers";
+import {object} from '../../helpers';
 
 interface IConnectedProps {
   getNextTitle?: any;
@@ -27,12 +27,11 @@ export class Welcome extends Component<IProps, IState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      mounted: false
+      mounted: false,
     }
   }
 
   public componentDidMount() {
-    console.log(this.props);
     this.interval = setInterval(() => {
       const { getNextTitle, title } = this.props;
       getNextTitle(title);

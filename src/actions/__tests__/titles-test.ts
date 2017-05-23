@@ -1,15 +1,15 @@
 /* Import actions */
-import { getNextTitle } from '../titles';
-/* Import constants */
 import * as constants from '../../constants';
+/* Import constants */
+import { getNextTitle } from '../titles';
 
 describe('titles actions', () => {
   it('should return the initial state', () => {
     expect(
       getNextTitle(),
     ).toEqual({
-      type: constants.GET_NEXT_TITLE,
       title: constants.TITLES[0],
+      type: constants.GET_NEXT_TITLE,
     });
   });
 
@@ -18,8 +18,8 @@ describe('titles actions', () => {
       expect(
         getNextTitle(constants.TITLES[i]),
       ).toEqual({
-        type: constants.GET_NEXT_TITLE,
         title: constants.TITLES[i + 1],
+        type: constants.GET_NEXT_TITLE,
       });
     }
   });
@@ -28,8 +28,8 @@ describe('titles actions', () => {
     expect(
       getNextTitle(constants.TITLES[constants.TITLES.length - 1]),
     ).toEqual({
-      type: constants.GET_NEXT_TITLE,
       title: constants.TITLES[0],
+      type: constants.GET_NEXT_TITLE,
     });
   });
 });
