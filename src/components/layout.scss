@@ -32,16 +32,13 @@ $linkhover: #94c;
     width: 500px;
   }
 }
-
-.page-container{
-  background-color: #eee !important;
+body {
+    background: #eee !important;
 }
 
 
 .custom-search-form .search-query .custom-list {
   padding: 10px;
-  /* IE7-8 doesn't have border-radius, so don't indent the padding */
-
   margin-bottom: 0;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -74,7 +71,6 @@ ul{
 
 .searchPanelAnim {
   opacity: 0.01;
-  width: 0;
 }
 
 

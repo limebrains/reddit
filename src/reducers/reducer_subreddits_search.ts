@@ -1,11 +1,14 @@
 import { HIDE_SEARCHPANEL, SAVE_SUBREDDIT, SEARCH_SUBREDDITS, } from '../actions/searching_page';
 
 interface ISubreditState {
-  savedSubreddits: Object;
+  savedSubreddits: any[];
+  isVisible: boolean;
 }
 
 const initialState: ISubreditState = {
-  savedSubreddits: {}
+  savedSubreddits: [],
+  isVisible: true,
+
 };
 
 const subreddits = (state = initialState, action: any) => {
@@ -13,15 +16,11 @@ const subreddits = (state = initialState, action: any) => {
     case SEARCH_SUBREDDITS:
       return { ...state, data: action.payload.data.data.children };
     case HIDE_SEARCHPANEL:
-      return {...state};
+      return {...state, isVisible: action.payload};
     case SAVE_SUBREDDIT:
-      console.log('SAVE_SUBREDDIT', state);
       return {
         ...state,
-        savedSubreddits: {
-          ...state.savedSubreddits,
-          [action.payload.display_name]: action.payload
-        }
+        savedSubreddits: [...state.savedSubreddits, action.payload]
       };
     default:
       return state;
@@ -32,5 +31,3 @@ const subreddits = (state = initialState, action: any) => {
 export {
   subreddits,
 };
-
-//       return {...state, ...action.payload.data.data.children};

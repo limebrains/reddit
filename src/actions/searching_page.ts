@@ -8,7 +8,7 @@ export const HIDE_SEARCHPANEL = 'hide_searchpanel';
 export const AUTH = 'authorization';
 export const SAVE_SUBREDDIT = 'save_subreddit';
 
-export const searchForSubreddits = (text: string = 'all', dispatch: any) => {
+export const searchForSubreddits = (text: string = 'all') => {
     const url = `${ROOT_URL}/subreddits/search.json?q=%3A${text}`;
     const request = axios.get(url);
 
@@ -18,12 +18,10 @@ export const searchForSubreddits = (text: string = 'all', dispatch: any) => {
     };
 };
 
-export const hideSearchpanel = (dispatch: any, isVisible: boolean) => {
-
+export const hideSearchpanel = (isVisible: boolean) => {
     return {
         payload: !isVisible,
         type: HIDE_SEARCHPANEL,
-
     };
 };
 
@@ -37,7 +35,7 @@ export const authorization = (config: Object) => {
 
 };
 
-export const saveSubreddit = (subreddit: Object, dispatch: any) =>  {
+export const saveSubreddit = (subreddit: Object) =>  {
     return{
         payload: subreddit,
         type: SAVE_SUBREDDIT,

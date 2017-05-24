@@ -1,16 +1,16 @@
-import { authorization } from '../../actions/searching_page';
-import { connect } from 'react-redux';
+import {authorization} from '../../actions/searching_page';
+import {connect} from 'react-redux';
 import * as React from 'react';
 
 interface IProps {
-    authorization?: any;
+  authorization?: any;
 }
 
 interface IState {
-    mounted: boolean;
-    username: string;
-    password: string;
-
+  mounted: boolean;
+  username: string;
+  password: string;
+  submitted: boolean;
 }
 
 const mapDispatchToProps = {authorization};
@@ -18,36 +18,43 @@ const mapDispatchToProps = {authorization};
 @(connect(null, mapDispatchToProps) as any)
 export default class Login extends React.Component<IProps, IState> {
 
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            mounted: false,
-            password: '',
-            username: '',
-        };
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      mounted: false,
+      password: '',
+      username: '',
+      submitted: false,
+    };
+  }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.FormSubmit = this.FormSubmit.bind(this);
-    }
+  public formSubmit = (event: any) => {
+    event.preventDefault();
+    const newState = {
+      ...this.state,
+      submitted: true,
+    };
+    this.setState(newState);
+  };
 
-    public FormSubmit(e: any){
-        e.preventDefault();
-        this.setState({[e.target.name]: e.target.value});
-    }
+  public handleChange = (event: any): void => {
+    const newState = {
+      ...this.state,
+      [event.target.name]: event.target.value,
+    };
 
-    public handleChange(event: any): void {
-        this.setState({[event.target.name]: event.target.value});
-    }
+    this.setState(newState);
+  };
 
-    public render() {
-        return(<div>
-            <h1>Login Page</h1>
-            <form onSubmit={this.FormSubmit}>
-                <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-                <input type="text" name="password" value={this.state.password} onChange={this.handleChange} />
-                <input type="submit" className="btn" value="Submit!" />
-            </form>
-        </div>);
+  public render() {
+    return (<div>
+      <h1>Login Page</h1>
+      <form onSubmit={this.formSubmit}>
+        <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
+        <input type="text" name="password" value={this.state.password} onChange={this.handleChange}/>
+        <input type="submit" className="btn" value="Submit!"/>
+      </form>
+    </div>);
 
-    }
+  }
 }
