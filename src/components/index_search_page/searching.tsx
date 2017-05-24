@@ -19,7 +19,6 @@ interface IProps {
   saveSubreddit?: any;
   subreddits?: ISubreddits;
   dispatch?: any;
-  isVisible?: boolean;
 }
 
 interface IState {
@@ -32,7 +31,6 @@ const mapStateToProps = (state: any): IProps => {
   return {
     text: state.subreddits.text || "",
     subreddits: state.subreddits,
-    isVisible: state.subreddits.isVisible,
   };
 };
 
@@ -55,17 +53,11 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
     const {
       searchForSubreddits
     } = this.props;
-
   }
 
   public openSubreddit = (event: any) => {
 
   };
-
-  public changeVisibilityOfSearchPanel = () => {
-    this.props.hideSearchpanel(this.props.isVisible);
-  };
-
 
   public handleChange = (event: any): void => {
     const value = event.target.value;
@@ -127,28 +119,11 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
     );
   }
 
-  public renderVButton = () => {
-    return (
-      <div className="col-xs-1">
-        <button
-          type="button"
-          className="btn"
-          id="search-btn"
-          onClick={this.changeVisibilityOfSearchPanel}
-        >
-          o
-        </button>
-      </div>
-    )
-  };
-
-
   public render() {
     return (
       <div className="container-fluid">
 
           {this.renderSearchPanel()}
-          {this.renderVButton()}
       </div>
     );
   }

@@ -2,7 +2,8 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import SearchSubreddits from './searching';
 import SavedSubreddits from './show_saved_subreddits';
-const CSSTransitionGroup = require('react-transition-group/CSSTransitionGroup')
+import ButtonComponent from "./visibility_button";
+const CSSTransitionGroup = require('react-transition-group/CSSTransitionGroup');
 
 
 interface IState {
@@ -35,24 +36,34 @@ export default class SearchPageComponent extends React.Component<IProps, IState>
 
   public render() {
 
-    const gridType = this.props.isVisible ?  "col-xs-8"  : "col-xs-12";
+    const gridType = this.props.isVisible ?  "col-xs-8"  : "col-xs-11";
+    const gridnumber = this.props.isVisible ? 'col-xs-4' : 'col-xs-1';
     return (
       <div className="page-content">
-        <CSSTransitionGroup
-          transitionName="searchPanelAnim"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={500}
-        >
-          {
-            this.props.isVisible &&
-            <div className="col-xs-4">
-              <SearchSubreddits/>
+
+        <div className={gridnumber}>
+          <CSSTransitionGroup
+            transitionName="searchPanelAnim"
+            transitionEnterTimeout={700}
+            transitionLeaveTimeout={700}
+          >
+            {
+              this.props.isVisible &&
+              <div className="col-xs-11">
+
+                <SearchSubreddits/>
+              </div>
+            }
+
+            <div className="col-xs-1">
+              < ButtonComponent />
             </div>
-          }
-          <div className={gridType}>
-            <SavedSubreddits />
-          </div>
-        </CSSTransitionGroup>
+          </CSSTransitionGroup>
+        </div>
+        <div className={gridType}>
+          <SavedSubreddits />
+        </div>
+
 
       </div>
     );
