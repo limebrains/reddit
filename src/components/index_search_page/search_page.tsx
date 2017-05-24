@@ -5,10 +5,6 @@ import SavedSubreddits from './show_saved_subreddits';
 import ButtonComponent from "./visibility_button";
 const CSSTransitionGroup = require('react-transition-group/CSSTransitionGroup');
 
-
-interface IState {
-}
-
 interface IProps {
   dispatch?: any;
   isVisible?: boolean;
@@ -25,7 +21,7 @@ const mapDispatchToProps = (dispatch: any) => {
 };
 
 @(connect(mapStateToProps, mapDispatchToProps) as any)
-export default class SearchPageComponent extends React.Component<IProps, IState> {
+export default class SearchPageComponent extends React.Component<IProps, {}> {
 
   constructor(props: any) {
     super(props);
@@ -63,8 +59,6 @@ export default class SearchPageComponent extends React.Component<IProps, IState>
         <div className={gridType}>
           <SavedSubreddits />
         </div>
-
-
       </div>
     );
   }

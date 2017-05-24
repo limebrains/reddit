@@ -88,6 +88,10 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
 
   private onSubredditClick = (subreddit: ISubreddit) => {
     return (e: any) => {
+      if(this.props.SavedSubreddits.length){
+      console.log(this.props.SavedSubreddits.indexOf(subreddit.data));
+      }
+      console.log(this.props.SavedSubreddits.length);
       this.props.saveSubreddit(subreddit.data);
     };
   };
