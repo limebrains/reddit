@@ -97,38 +97,29 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
 
   };
 
-  public renderSearchPanel() {
-    return (
-      <div className="row pall pleft col-xs-11">
-        <div className="row">
-          <div className="row search-panel pall ptop">
-            <form className="form-group">
-              <input
-                type="text"
-                className="search-query mac-style"
-                style={{height: '30px', width:'100%', fontSize: '18px'}}
-                value={this.state.input}
-                onChange={this.handleChange}
-              />
-            </form>
-          </div>
-        </div>
-        <ul>
-          {this.props.subreddits.data && this.props.subreddits.data.map(
-            (subreddit: ISubreddit, index: number) => {
-              return this.renderSubreddit(subreddit, index);
-            })}
-        </ul>
-      </div>
-
-    );
-  }
 
   public render() {
     return (
       <div className="container-fluid">
-
-        {this.renderSearchPanel()}
+        <div className="search-panel pall">
+          <form className="form-group">
+            <input
+              type="text"
+              className="search-query mac-style"
+              style={{height: '30px', width:'100%', fontSize: '18px'}}
+              value={this.state.input}
+              onChange={this.handleChange}
+            />
+          </form>
+        </div>
+        <div className="search-results">
+          <ul>
+            {this.props.subreddits.data && this.props.subreddits.data.map(
+              (subreddit: ISubreddit, index: number) => {
+                return this.renderSubreddit(subreddit, index);
+              })}
+          </ul>
+        </div>
       </div>
     );
   }

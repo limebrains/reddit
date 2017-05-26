@@ -35,7 +35,7 @@ export default class ButtonComponent extends React.Component<IProps, IState> {
 
   public render() {
     return(
-      <div className="container-fluid">
+      <div className="container-fluid flip-menu">
           <button
             type="button"
             className="btn"

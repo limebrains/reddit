@@ -32,10 +32,12 @@ $linkhover: #94c;
     width: 500px;
   }
 }
-body {
-    background: #eee !important;
-}
 
+body {
+  background: #eee !important;
+  -ms-touch-action: none;
+  touch-action: none;
+}
 
 .custom-search-form .search-query .custom-list {
   padding: 10px;
@@ -43,14 +45,13 @@ body {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  -webkit-transition: width  0.2s ease-in-out;
-  -moz-transition:width  0.2s ease-in-out;
-  -o-transition: width  0.2s ease-in-out;
-  transition: width  0.2s ease-in-out;
+  -webkit-transition: width 0.2s ease-in-out;
+  -moz-transition: width 0.2s ease-in-out;
+  -o-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
 }
 
-
-ul{
+ul {
   list-style: none;
 }
 
@@ -61,28 +62,72 @@ ul{
 .pall {
   padding: 10px 20px 10px 20px;
 }
-.pall-small{
+
+.pall-small {
   padding-left: 15px;
   padding-right: 15px;
 }
-.search-panel{
+
+.search-panel {
   background: #fff;
   margin: 10px 30px 25px 25px !important;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.16);
-  margin-top: 25px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16);
+  margin-top: 0 !important;
+  overflow-x: scroll;
+  max-height: 40vh;
+}
+
+.search-panel-results {
+  cursor: pointer;
 }
 
 .searchPanelAnim {
   opacity: 0.01;
 }
 
-
-.searchPanelAnim-enter.searchPanelAnim-enter-active{
+.searchPanelAnim-enter.searchPanelAnim-enter-active {
   transition: 500ms ease-in-out;
 }
 
-.searchPanelAnim-leave.searchPanelAnim-leave-active{
+.only-first-row {
+  position: relative;
+  padding: 0 5px;
+  margin: 0;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+
+}
+
+.saved-subreddit-menu-item {
+  width: 225px;
+  display: inline-block;
+  vertical-align: top;
+  background: white;
+  padding: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  .close-icon {
+    text-align: right;
+    cursor: pointer;
+    float: right;
+  }
+}
+
+.flip-menu {
+  z-index: 1000;
+}
+
+.searchPanelAnim-leave.searchPanelAnim-leave-active {
   transition: 500ms ease-in-out;
   opacity: 0.01;
   width: 0;
+}
+
+.search-results {
+  overflow-y: scroll;
+  height: 50vh;
+
 }

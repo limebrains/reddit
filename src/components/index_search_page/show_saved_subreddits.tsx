@@ -6,6 +6,7 @@ interface IProps {
   removeSubreddit?: any;
   dispatch?: any;
   savedSubreddits?: ISubreddit[];
+  gridType?: string;
 }
 
 interface ISubreddit {
@@ -58,11 +59,9 @@ export default class showSavedSubreddits extends React.Component<IProps, IState>
   private renderSubreddit = (subreddit: any, index: number) => {
     return (
 
-      <div className="custom-list row search-panel pall col-xs-2" key={subreddit.id}>
-        <div className="row">
-          <div className="col-xs-10">{subreddit.display_name_prefixed}</div>
-          <button type="button" className="btn-xs btn-primary text-right" onClick={this.removeSubredditOnClick(subreddit)}>o</button>
-        </div>
+      <div className="saved-subreddit-menu-item" key={subreddit.id}>
+          <span>{subreddit.display_name_prefixed}</span>
+          <span onClick={this.removeSubredditOnClick(subreddit)} className="close-icon">x</span>
       </div>
     );
   };
@@ -72,7 +71,7 @@ export default class showSavedSubreddits extends React.Component<IProps, IState>
 
     console.log(this.props.savedSubreddits);
     return (
-      <div className="container-fluid">
+      <div className={this.props.gridType}>
         {this.props.savedSubreddits &&
         this.props.savedSubreddits.map((subreddit: any, index: number) => {
           return this.renderSubreddit(subreddit, index);

@@ -8,11 +8,13 @@ const CSSTransitionGroup = require('react-transition-group/CSSTransitionGroup');
 interface IProps {
   dispatch?: any;
   isVisible?: boolean;
+  quanityOfSavedSubreddits?: number;
 }
 
 const mapStateToProps = (state: any): IProps => {
   return {
     isVisible: state.subreddits.isVisible,
+    quanityOfSavedSubreddits: state.subreddits.savedSubreddits.length,
   };
 };
 
@@ -28,32 +30,37 @@ export default class SearchPageComponent extends React.Component<IProps, {}> {
     this.state = {
     };
 
+    document.addEventListener('touchmove', this.preventMacbookBack);
   }
+
+  private preventMacbookBack = (e: any) => {
+    e.preventDefault();
+  };
 
   public render() {
 
-    const gridType = this.props.isVisible ?  "col-xs-8"  : "col-xs-11";
-    const gridnumber = this.props.isVisible ? 'col-xs-4' : 'col-xs-1';
+    const gridType = this.props.isVisible ?  "col-xs-8"  : "only-first-row";
+    const panel_width = this.props.isVisible ? '' : `${this.props.quanityOfSavedSubreddits*160}px`;
     return (
       <div className="page-content">
+        <div className="panel-top">
 
-        <div className="search-panel">
-          <div className={gridnumber}>
-            {
-              this.props.isVisible &&
-              <div className="col-xs-11">
+          <div className="col-xs-1">
+            <ButtonComponent />
+          </div>
 
-                <SearchSubreddits/>
-              </div>
-            }
-            <div className="col-xs-1">
-              < ButtonComponent />
+        </div>
+
+        <div className="search-panel-container" >
+          {
+            this.props.isVisible &&
+            <div className="col-xs-3">
+              <SearchSubreddits/>
             </div>
-
-          </div>
-          <div className={gridType}>
-            <SavedSubreddits />
-          </div>
+          }
+        </div>
+        <div className="extra-width">
+            <SavedSubreddits gridType={gridType} />
         </div>
       </div>
     );
