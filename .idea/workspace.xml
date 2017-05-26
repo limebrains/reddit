@@ -3,13 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="626e7856-52b2-443f-95f9-ae2718a0ab24" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/searching_page.ts" afterPath="$PROJECT_DIR$/src/actions/searching_page.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/index_search_page/search_page.tsx" afterPath="$PROJECT_DIR$/src/components/index_search_page/search_page.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/index_search_page/searching.tsx" afterPath="$PROJECT_DIR$/src/components/index_search_page/searching.tsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/index_search_page/show_saved_subreddits.tsx" afterPath="$PROJECT_DIR$/src/components/index_search_page/show_saved_subreddits.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/index_search_page/visibility_button.tsx" afterPath="$PROJECT_DIR$/src/components/index_search_page/visibility_button.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/layout.scss" afterPath="$PROJECT_DIR$/src/components/layout.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/reducers/reducer_subreddits_search.ts" afterPath="$PROJECT_DIR$/src/reducers/reducer_subreddits_search.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yarn.lock" afterPath="$PROJECT_DIR$/yarn.lock" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,8 +47,8 @@
       <file leaf-file-name="show_saved_subreddits.tsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/index_search_page/show_saved_subreddits.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="51" column="24" lean-forward="false" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+            <state relative-caret-position="660">
+              <caret line="44" column="11" lean-forward="true" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -78,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search_page.tsx" pinned="false" current-in-tab="false">
+      <file leaf-file-name="search_page.tsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/index_search_page/search_page.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="27" column="18" lean-forward="true" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+            <state relative-caret-position="525">
+              <caret line="35" column="45" lean-forward="true" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -94,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/index_search_page/layout.tsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="36" lean-forward="true" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
+              <caret line="0" column="36" lean-forward="false" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -116,17 +114,17 @@
         <entry file="file://$PROJECT_DIR$/src/reducers/index.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reducer_subreddits_search.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reducer_subreddits_search.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reducers/reducer_subreddits_search.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+            <state relative-caret-position="86">
+              <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -160,9 +158,11 @@
       <find>changeVisibilityOfSearchPanel</find>
       <find>renderSearchPanel</find>
       <find>onSubredditClick</find>
+      <find>saveSavedSubreddits</find>
     </findStrings>
     <replaceStrings>
       <replace>saveSubredditClick</replace>
+      <replace>saveLocalSubreddits</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/components</dir>
@@ -201,13 +201,13 @@
         <option value="$PROJECT_DIR$/src/components/index_search_page/search_page.tsx.tsx" />
         <option value="$PROJECT_DIR$/src/components/index_search_page/login.tsx" />
         <option value="$PROJECT_DIR$/src/components/index_search_page/layout.tsx" />
-        <option value="$PROJECT_DIR$/src/components/index_search_page/search_page.tsx" />
         <option value="$PROJECT_DIR$/src/components/layout.scss" />
         <option value="$PROJECT_DIR$/src/components/index_search_page/searching.tsx" />
         <option value="$PROJECT_DIR$/src/actions/searching_page.ts" />
         <option value="$PROJECT_DIR$/src/components/index_search_page/visibility_button.tsx" />
         <option value="$PROJECT_DIR$/src/components/index_search_page/show_saved_subreddits.tsx" />
         <option value="$PROJECT_DIR$/src/reducers/reducer_subreddits_search.ts" />
+        <option value="$PROJECT_DIR$/src/components/index_search_page/search_page.tsx" />
       </list>
     </option>
   </component>
@@ -376,12 +376,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="typescript-compiler-editor-notification" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
-    <property name="FullScreen" value="true" />
     <property name="SearchEverywhereHistoryKey" value="red&#9;FILE&#9;file:///Users/kacper/programming/reddit/src/reducers/reducer_subreddits_search.ts" />
     <property name="node.js.path.for.package.tslint" value="/usr/bin/node" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.tslint" value="$PROJECT_DIR$/node_modules/tslint" />
     <property name="editor.config.accepted" value="true" />
+    <property name="FullScreen" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -681,7 +681,7 @@
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17238913" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34950247" sideWeight="0.5028612" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2855691" sideWeight="0.5028612" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1044,24 +1044,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index_search_page/show_saved_subreddits.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="51" column="24" lean-forward="false" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/searching_page.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -1075,15 +1057,23 @@
     <entry file="file://$PROJECT_DIR$/src/components/index_search_page/layout.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="36" lean-forward="true" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
+          <caret line="0" column="36" lean-forward="false" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index_search_page/search_page.tsx">
+    <entry file="file://$PROJECT_DIR$/src/reducers/index.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="27" column="18" lean-forward="true" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+        <state relative-caret-position="45">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/index_search_page/show_saved_subreddits.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="44" column="11" lean-forward="true" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -1092,9 +1082,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/reducer_subreddits_search.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+        <state relative-caret-position="86">
+          <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/index_search_page/search_page.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="45" lean-forward="true" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

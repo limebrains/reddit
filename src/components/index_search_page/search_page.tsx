@@ -39,7 +39,6 @@ export default class SearchPageComponent extends React.Component<IProps, {}> {
 
         <div className="search-panel">
           <div className={gridnumber}>
-
             {
               this.props.isVisible &&
               <div className="col-xs-11">
@@ -47,7 +46,6 @@ export default class SearchPageComponent extends React.Component<IProps, {}> {
                 <SearchSubreddits/>
               </div>
             }
-
             <div className="col-xs-1">
               < ButtonComponent />
             </div>
