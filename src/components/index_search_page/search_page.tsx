@@ -37,12 +37,9 @@ export default class SearchPageComponent extends React.Component<IProps, {}> {
     return (
       <div className="page-content">
 
-        <div className={gridnumber}>
-          <CSSTransitionGroup
-            transitionName="searchPanelAnim"
-            transitionEnterTimeout={700}
-            transitionLeaveTimeout={700}
-          >
+        <div className="search-panel">
+          <div className={gridnumber}>
+
             {
               this.props.isVisible &&
               <div className="col-xs-11">
@@ -54,10 +51,11 @@ export default class SearchPageComponent extends React.Component<IProps, {}> {
             <div className="col-xs-1">
               < ButtonComponent />
             </div>
-          </CSSTransitionGroup>
-        </div>
-        <div className={gridType}>
-          <SavedSubreddits />
+
+          </div>
+          <div className={gridType}>
+            <SavedSubreddits />
+          </div>
         </div>
       </div>
     );

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
+import { removeSubreddit } from '../../actions/searching_page';
 
 interface IProps {
+  removeSubreddit?: any;
   dispatch?: any;
   SavedSubreddits?: ISubreddit[];
 }
@@ -25,9 +27,7 @@ const mapStateToProps = (state: any): IProps => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {dispatch};
-};
+const mapDispatchToProps = { removeSubreddit };
 
 
 @(connect(mapStateToProps, mapDispatchToProps) as any)
@@ -41,11 +41,28 @@ export default class showSavedSubreddits extends React.Component<IProps, IState>
 
   }
 
+  public componentDidMount() {
+    const {
+      removeSubreddit
+    } = this.props;
+  }
+
+  private removeSubredditOnClick = (subreddit: any ) => {
+    return (e: any) => {
+      this.props.removeSubreddit(subreddit);
+    };
+
+  };
+
 
   private renderSubreddit = (subreddit: any, index: number) => {
     return (
+
       <div className="custom-list row search-panel pall col-xs-2" key={index}>
-        {subreddit.display_name_prefixed}
+        <div className="row">
+          <div className="col-xs-10">{subreddit.display_name_prefixed}</div>
+          <button type="button" className="btn-xs btn-primary text-right" onClick={this.removeSubredditOnClick(subreddit)}>o</button>
+        </div>
       </div>
     );
   };

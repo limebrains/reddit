@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import {hideSearchpanel} from '../../actions/searching_page';
 
 interface IProps {
-  hideSearchpanel?: any;
   dispatch?: any;
+  hideSearchpanel?: any;
   isVisible?: boolean;
 }
 

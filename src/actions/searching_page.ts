@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {subreddits} from "../reducers/reducer_subreddits_search";
 
 const ROOT_URL = 'https://www.reddit.com';
 const CLIENT_ID = 'HqefUk8PG3nnvSwbHR2XKd_l3bc';
@@ -7,6 +8,7 @@ export const SEARCH_SUBREDDITS = 'search_subreddits';
 export const HIDE_SEARCHPANEL = 'hide_searchpanel';
 export const AUTH = 'authorization';
 export const SAVE_SUBREDDIT = 'save_subreddit';
+export const REMOVE_SAVED_SUBREDDIT = 'remove_subreddit';
 
 export const searchForSubreddits = (text: string = 'all') => {
     const url = `${ROOT_URL}/subreddits/search.json?q=%3A${text}`;
@@ -40,4 +42,11 @@ export const saveSubreddit = (subreddit: Object) =>  {
         payload: subreddit,
         type: SAVE_SUBREDDIT,
     };
+};
+
+export const removeSubreddit = (subreddit: Object) => {
+  return{
+    payload: subreddit,
+    type: REMOVE_SAVED_SUBREDDIT,
+  }
 };

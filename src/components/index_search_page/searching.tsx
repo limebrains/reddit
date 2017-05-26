@@ -8,6 +8,7 @@ interface ISubreddit {
 }
 
 interface ISubreddits {
+  savedSubreddits: ISubreddit[];
   data: ISubreddit[];
 }
 
@@ -75,7 +76,7 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
       <li
         className="row search-panel pall"
         key={index}
-        onClick={this.onSubredditClick(subreddit)}
+        onClick={this.saveSubredditClick(subreddit)}
       >
         <div className="custom-list">
           {subreddit.data.display_name_prefixed}
@@ -86,14 +87,14 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
     )
   };
 
-  private onSubredditClick = (subreddit: ISubreddit) => {
-    return (e: any) => {
-      if(this.props.SavedSubreddits.length){
-      console.log(this.props.SavedSubreddits.indexOf(subreddit.data));
-      }
-      console.log(this.props.SavedSubreddits.length);
-      this.props.saveSubreddit(subreddit.data);
-    };
+  private saveSubredditClick = (subreddit: ISubreddit) => {
+    if (!(this.props.subreddits.savedSubreddits.some(elem => elem === subreddit.data))){ //checking if object is an array
+      return (e: any) => {
+        this.props.saveSubreddit(subreddit.data);
+      };
+
+    }
+
   };
 
   public renderSearchPanel() {
@@ -127,7 +128,7 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
     return (
       <div className="container-fluid">
 
-          {this.renderSearchPanel()}
+        {this.renderSearchPanel()}
       </div>
     );
   }
