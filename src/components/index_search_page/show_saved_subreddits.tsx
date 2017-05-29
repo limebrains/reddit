@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import { removeSubreddit } from '../../actions/searching_page';
-import {openSubreddit} from "../../actions/display_subreddit";
+import {openSubreddit, fetchingSubreddit} from "../../actions/display_subreddit";
 
 
 interface IProps {
@@ -10,6 +10,7 @@ interface IProps {
   savedSubreddits?: ISubreddit[];
   gridType?: string;
   openSubreddit?: any;
+  fetchingSubreddit?: any;
 }
 
 interface ISubreddit {
@@ -31,7 +32,7 @@ const mapStateToProps = (state: any): IProps => {
   };
 };
 
-const mapDispatchToProps = { removeSubreddit, openSubreddit };
+const mapDispatchToProps = { removeSubreddit, openSubreddit, fetchingSubreddit };
 
 
 @(connect(mapStateToProps, mapDispatchToProps) as any)
@@ -59,6 +60,7 @@ export default class showSavedSubreddits extends React.Component<IProps, IState>
   private openSubredditOnClick = (subreddit: any ) => {
     return (e: any) => {
       this.props.openSubreddit(subreddit.display_name_prefixed);
+      this.props.fetchingSubreddit();
     };
   };
 

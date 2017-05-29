@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
+import {LoaderComponent} from "../common/loader";
 
 interface IProps {
   threads?: any[];
@@ -28,7 +29,6 @@ export default class DisplaySubreddit extends React.Component<IProps, {}> {
   }
 
   private renderThreads = (thread: any) => {
-    console.log(thread);
     return(
       <div className="thread-panel col-xs-12" key={thread.data.id}>
         <h2>{thread.data.title}</h2>
@@ -45,6 +45,7 @@ export default class DisplaySubreddit extends React.Component<IProps, {}> {
           this.props.threads.map((threads: any) => {
             return this.renderThreads(threads);
           })}
+          {this.props.threads && this.props.threads.length === 0 && (<LoaderComponent />)}
         </div>
       </div>
     );
