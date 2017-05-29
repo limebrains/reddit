@@ -77,6 +77,13 @@ ul {
   max-height: 40vh;
 }
 
+.thread-panel {
+  background: #fff;
+  margin: 10px 30px 25px 25px !important;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16);
+  padding: 15px 15px 15px 15px;
+}
+
 .search-panel-results {
   cursor: pointer;
 }

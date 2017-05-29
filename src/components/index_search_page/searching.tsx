@@ -78,7 +78,7 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
         key={index}
         onClick={this.saveSubredditClick(subreddit)}
       >
-        <div className="custom-list">
+        <div className="custom-list search-panel-results">
           {subreddit.data.display_name_prefixed}
           <br/>
           <small>{subreddit.data.public_description}</small>
@@ -92,9 +92,7 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
       return (e: any) => {
         this.props.saveSubreddit(subreddit.data);
       };
-
     }
-
   };
 
 

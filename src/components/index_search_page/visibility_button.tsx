@@ -46,6 +46,6 @@ export default class ButtonComponent extends React.Component<IProps, IState> {
           </button>
       </div>
     );
+  };
 
-  }
 }

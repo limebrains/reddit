@@ -1,12 +1,15 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import { removeSubreddit } from '../../actions/searching_page';
+import {openSubreddit} from "../../actions/display_subreddit";
+
 
 interface IProps {
   removeSubreddit?: any;
   dispatch?: any;
   savedSubreddits?: ISubreddit[];
   gridType?: string;
+  openSubreddit?: any;
 }
 
 interface ISubreddit {
@@ -28,7 +31,7 @@ const mapStateToProps = (state: any): IProps => {
   };
 };
 
-const mapDispatchToProps = { removeSubreddit };
+const mapDispatchToProps = { removeSubreddit, openSubreddit };
 
 
 @(connect(mapStateToProps, mapDispatchToProps) as any)
@@ -39,7 +42,6 @@ export default class showSavedSubreddits extends React.Component<IProps, IState>
     this.state = {
 
     };
-
   }
 
   public componentDidMount() {
@@ -52,24 +54,27 @@ export default class showSavedSubreddits extends React.Component<IProps, IState>
     return (e: any) => {
       this.props.removeSubreddit(subreddit);
     };
+  };
 
+  private openSubredditOnClick = (subreddit: any ) => {
+    return (e: any) => {
+      this.props.openSubreddit(subreddit.display_name_prefixed);
+    };
   };
 
 
   private renderSubreddit = (subreddit: any, index: number) => {
     return (
 
-      <div className="saved-subreddit-menu-item" key={subreddit.id}>
-          <span>{subreddit.display_name_prefixed}</span>
-          <span onClick={this.removeSubredditOnClick(subreddit)} className="close-icon">x</span>
+      <div className="saved-subreddit-menu-item search-panel-results" key={subreddit.id}>
+        <span onClick={this.openSubredditOnClick(subreddit)}>{subreddit.display_name_prefixed}</span>
+        <span onClick={this.removeSubredditOnClick(subreddit)} className="close-icon">x</span>
       </div>
     );
   };
 
 
   public render() {
-
-    console.log(this.props.savedSubreddits);
     return (
       <div className={this.props.gridType}>
         {this.props.savedSubreddits &&
@@ -79,5 +84,6 @@ export default class showSavedSubreddits extends React.Component<IProps, IState>
         }
       </div>
     );
-  }
+  };
+
 }
