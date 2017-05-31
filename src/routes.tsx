@@ -16,6 +16,7 @@ import config from './config';
 import { NotFound } from './components';
 import IndexPage from "./components/index_search_page/layout";
 import DisplaySubreddit from "./components/display_subreddit/open_subreddit";
+import showThread from "./components/show_thread/display_thread";
 
 
 /* Routes */
@@ -26,6 +27,7 @@ const Routes: StatelessComponent<any> = (): any => {
       <Router history={ history }>
           <Route path={urlPrefix} component={ IndexPage }>
               <IndexRoute component= {DisplaySubreddit} />
+              <Route path="/threads/:id/" component={showThread} />
           </Route>
           <Route path="*" component={ NotFound } />
 
