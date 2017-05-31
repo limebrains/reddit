@@ -1,6 +1,9 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {LoaderComponent} from "../common/loader";
+import {Link} from "react-router";
+import { Home } from '../home';
+
 
 interface IProps {
   threads?: any[];
@@ -28,11 +31,16 @@ export default class DisplaySubreddit extends React.Component<IProps, {}> {
     };
   }
 
+  public readMore(){
+
+  }
+
   private renderThreads = (thread: any) => {
     return(
       <div className="thread-panel col-xs-12" key={thread.data.id}>
-        <h2>{thread.data.title}</h2>
-        <span>{thread.data.selftext}</span>
+        <h2>{thread.data.title}</h2> <h5>{thread.data.domain}</h5>
+        <span>{thread.data.selftext.substring(0, 255)}... <span onClick={this.readMore}>READ MORE</span></span>
+        <span><Link to="/home"> See on reddit</Link></span>
       </div>
     );
   };

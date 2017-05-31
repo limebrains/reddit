@@ -13,10 +13,9 @@ import { history, store } from './prepare';
 import config from './config';
 
 /* Components */
-import { Layout, NotFound } from './components';
-import { Home } from './components/home';
+import { NotFound } from './components';
 import IndexPage from "./components/index_search_page/layout";
-import Login from "./components/index_search_page/login";
+import DisplaySubreddit from "./components/display_subreddit/open_subreddit";
 
 
 /* Routes */
@@ -25,11 +24,8 @@ const Routes: StatelessComponent<any> = (): any => {
   return (
     <Provider store={ store }>
       <Router history={ history }>
-
-          <Route path={urlPrefix}>
-              <IndexRoute component={IndexPage} />
-              <Route path="/login" component={ Login } />
-              <Route path="/home" component={ Home } />
+          <Route path={urlPrefix} component={ IndexPage }>
+              <IndexRoute component= {DisplaySubreddit} />
           </Route>
           <Route path="*" component={ NotFound } />
 
@@ -39,8 +35,3 @@ const Routes: StatelessComponent<any> = (): any => {
 };
 
 export default Routes;
-
-          /*
-        <Route path={ urlPrefix } component={ Layout }>
-          <IndexRoute component={ Home } />
-        </Route> */

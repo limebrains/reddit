@@ -62,6 +62,7 @@ export default class SearchPageComponent extends React.Component<IProps, {}> {
         <div className="extra-width">
             <SavedSubreddits gridType={gridType} />
         </div>
+
       </div>
     );
   }

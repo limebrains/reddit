@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import { removeSubreddit } from '../../actions/searching_page';
-import {openSubreddit, fetchingSubreddit} from "../../actions/display_subreddit";
+import {openSubreddit, fetchingSubreddit } from "../../actions/display_subreddit";
 
 
 interface IProps {
@@ -59,8 +59,8 @@ export default class showSavedSubreddits extends React.Component<IProps, IState>
 
   private openSubredditOnClick = (subreddit: any ) => {
     return (e: any) => {
-      this.props.openSubreddit(subreddit.display_name_prefixed);
       this.props.fetchingSubreddit();
+      this.props.openSubreddit(subreddit.display_name_prefixed);
     };
   };
 
