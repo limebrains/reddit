@@ -25,7 +25,7 @@ export const fetchingSubreddit = () => {
 };
 
 export const openThread = (text:string) => {
-  const url = `${text}.json`;
+  const url = `${ROOT_URL}/${text}.json`;
   const request = axios.get(url);
 
   return {

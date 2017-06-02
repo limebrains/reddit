@@ -2,6 +2,8 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import { removeSubreddit } from '../../actions/searching_page';
 import {openSubreddit, fetchingSubreddit } from "../../actions/display_subreddit";
+import {Link} from "react-router";
+
 
 
 interface IProps {
@@ -67,9 +69,10 @@ export default class showSavedSubreddits extends React.Component<IProps, IState>
 
   private renderSubreddit = (subreddit: any, index: number) => {
     return (
-
       <div className="saved-subreddit-menu-item search-panel-results" key={subreddit.id}>
+        <Link to={`/${subreddit.display_name_prefixed}/`}>
         <span onClick={this.openSubredditOnClick(subreddit)}>{subreddit.display_name_prefixed}</span>
+        </Link>
         <span onClick={this.removeSubredditOnClick(subreddit)} className="close-icon">x</span>
       </div>
     );

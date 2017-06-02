@@ -485,3 +485,16 @@ ul {
 		-moz-transform: rotate(900deg);
 	}
 }
+.giphy-shit{
+  position:relative;
+  padding-bottom:178%
+}
+
+.giphy-iframe-props {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  scroll: hidden;
+}

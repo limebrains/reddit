@@ -1,25 +1,30 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
+import {openThread} from "../../actions/display_subreddit";
+const Markdown = require('react-remarkable');
+
+
 
 
 interface IProps {
   threadList?: any;
   threadKey?: any;
+  openThread?: any
 }
 
 interface IState {
 }
 
 const mapStateToProps = (state: any): IProps => {
-  console.log(state.routing);
   return {
     threadList: state.displaySubreddit.threads,
-    threadKey: parseInt(state.routing.locationBeforeTransitions.pathname.split('/')[2]),
+    threadKey: state.routing.locationBeforeTransitions.pathname.split('/')[4],
+
 
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {openThread};
 
 
 @(connect(mapStateToProps, mapDispatchToProps) as any)
@@ -32,9 +37,15 @@ export default class showThread extends React.Component<IProps, IState> {
     };
   }
 
+  public componentDidMount() {
+    console.log(this.props.threadList[0].data.permalink);
+    this.props.openThread(this.props.threadList[0].data.permalink);
+
+  };
+
   public find(obj: any){
-     return obj.id == this.props.threadKey;
-    }
+    return obj.id == this.props.threadKey;
+  }
 
 
   public render() {
@@ -50,7 +61,9 @@ export default class showThread extends React.Component<IProps, IState> {
 
     return(
       <div className="container">
-        <p>{thread.data.selftext}</p>
+        <div className="thread-panel col-xs-12">
+          <Markdown source={thread.data.selftext} />
+        </div>
       </div>
     );
   }

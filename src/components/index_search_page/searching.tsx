@@ -56,9 +56,6 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
     } = this.props;
   }
 
-  public openSubreddit = (event: any) => {
-
-  };
 
   public handleChange = (event: any): void => {
     const value = event.target.value;
