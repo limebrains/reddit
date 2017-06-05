@@ -3,13 +3,10 @@ import {connect} from 'react-redux';
 import {openThread} from "../../actions/display_subreddit";
 const Markdown = require('react-remarkable');
 
-
-
-
 interface IProps {
   threadList?: any;
   threadKey?: any;
-  openThread?: any
+  openThread?: any;
 }
 
 interface IState {
@@ -17,15 +14,12 @@ interface IState {
 
 const mapStateToProps = (state: any): IProps => {
   return {
-    threadList: state.displaySubreddit.threads,
     threadKey: state.routing.locationBeforeTransitions.pathname.split('/')[4],
-
-
+    threadList: state.displaySubreddit.threads,
   };
 };
 
 const mapDispatchToProps = {openThread};
-
 
 @(connect(mapStateToProps, mapDispatchToProps) as any)
 export default class showThread extends React.Component<IProps, IState> {
@@ -38,13 +32,11 @@ export default class showThread extends React.Component<IProps, IState> {
   }
 
   public componentDidMount() {
-    console.log(this.props.threadList[0].data.permalink);
     this.props.openThread(this.props.threadList[0].data.permalink);
-
   };
 
-  public find(obj: any){
-    return obj.id == this.props.threadKey;
+  public find(obj: any) {
+    return obj.id === this.props.threadKey;
   }
 
 
@@ -54,8 +46,8 @@ export default class showThread extends React.Component<IProps, IState> {
       threadKey,
     } = this.props;
 
-    const thread = threadList.filter( (obj:any) => {
-      return obj.data.id == threadKey
+    const thread = threadList.filter( (obj: any) => {
+      return obj.data.id === threadKey;
     })[0];
     console.log(threadList, threadKey, thread);
 

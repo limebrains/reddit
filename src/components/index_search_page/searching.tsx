@@ -85,7 +85,8 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
   };
 
   private saveSubredditClick = (subreddit: ISubreddit) => {
-    if (!(this.props.subreddits.savedSubreddits.some(elem => elem === subreddit.data))){ //checking if object is an array
+    if (!(this.props.subreddits.savedSubreddits.some(
+      elem => elem === subreddit.data))) {
       return (e: any) => {
         this.props.saveSubreddit(subreddit.data);
       };
