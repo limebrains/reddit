@@ -2,6 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {LoaderComponent} from "../common/loader";
 import {Link} from "react-router";
+import {openSubreddit, fetchingSubreddit} from "../../actions/display_subreddit";
 const Markdown = require('react-remarkable');
 
 interface IProps {
@@ -10,15 +11,19 @@ interface IProps {
   isVisible?: boolean;
   quanityOfSavedSubreddits?: number;
   openThread?: any;
+  openSubreddit?: any;
+  fetchingSubreddit?: any;
+  route?: any;
 }
 
 const mapStateToProps = (state: any): IProps => {
   return {
     threads: state.displaySubreddit.threads,
+    route: state.routing.locationBeforeTransitions.pathname,
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => { return {dispatch}; };
+const mapDispatchToProps = {openSubreddit, fetchingSubreddit};
 
 
 @(connect(mapStateToProps, mapDispatchToProps) as any)
@@ -29,11 +34,23 @@ export default class DisplaySubreddit extends React.Component<IProps, {}> {
     this.state = {};
   };
 
+  public componentWillMount() {
+    this.props.fetchingSubreddit();
+    this.props.openSubreddit(this.props.route);
+  }
+
   public componentDidMount() {
     const script = document.createElement('script');
     script.src = "//s.imgur.com/min/embed.js";
     script.charset = 'utf-8';
     document.body.appendChild(script);
+  }
+
+  public componentWillReceiveProps(newProps: any){
+    if(this.props.route != newProps.route) {
+      this.props.fetchingSubreddit();
+      this.props.openSubreddit(newProps.route);
+    }
   }
 
   public render() {
@@ -74,9 +91,7 @@ export default class DisplaySubreddit extends React.Component<IProps, {}> {
       default:
         return;
     }
-
   }
-
 
   private renderThreads = (thread: any) => {
     return (

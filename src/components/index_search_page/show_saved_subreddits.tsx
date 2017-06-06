@@ -60,10 +60,10 @@ export default class showSavedSubreddits extends React.Component<IProps, IState>
   };
 
   private openSubredditOnClick = (subreddit: any ) => {
-    return (e: any) => {
-      this.props.fetchingSubreddit();
-      this.props.openSubreddit(subreddit.display_name_prefixed);
-    };
+    // return (e: any) => {
+    //   this.props.fetchingSubreddit();
+    //   this.props.openSubreddit(subreddit.url);
+    // };
   };
 
 
@@ -71,7 +71,9 @@ export default class showSavedSubreddits extends React.Component<IProps, IState>
     return (
       <div className="saved-subreddit-menu-item search-panel-results" key={subreddit.id}>
         <Link to={`/${subreddit.display_name_prefixed}/`}>
-        <span onClick={this.openSubredditOnClick(subreddit)}>{subreddit.display_name_prefixed}</span>
+        {/*<span onClick={this.openSubredditOnClick(subreddit)}>*/}
+          {subreddit.display_name_prefixed}
+          {/*</span>*/}
         </Link>
         <span onClick={this.removeSubredditOnClick(subreddit)} className="close-icon">x</span>
       </div>

@@ -39,11 +39,11 @@ export default class SearchPageComponent extends React.Component<IProps, {}> {
 
   public render() {
 
-    const gridType = this.props.isVisible ?  "col-xs-8"  : "only-first-row";
+    const gridType = this.props.isVisible ?  "top-panel-max-height col-xs-8"  : "only-first-row";
     const panel_width = this.props.isVisible ? '' : `${this.props.quanityOfSavedSubreddits*160}px`;
     return (
-      <div className="page-content">
-        <div className="panel-top">
+      <div className="page-content top-panel-max-height">
+        <div className="panel-top ">
 
           <div className="col-xs-1">
             <ButtonComponent />
@@ -51,7 +51,7 @@ export default class SearchPageComponent extends React.Component<IProps, {}> {
 
         </div>
 
-        <div className="search-panel-container" >
+        <div className="search-panel-container " >
           {
             this.props.isVisible &&
             <div className="col-xs-3">
