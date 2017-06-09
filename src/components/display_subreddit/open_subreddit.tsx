@@ -78,7 +78,7 @@ export default class DisplaySubreddit extends React.Component<IProps, {}> {
       }, 1000);
       const dataId = media.url.split('.com/')[1].split('.gif')[0];
       return (<blockquote className="imgur-embed-pub" lang="en" data-id={dataId}>
-        <a href={`//imgur.com/${dataId}`}></a></blockquote>);
+        <a href={`//imgur.com/${dataId}`}>Open Location</a></blockquote>);
     }
 
     switch(media.post_hint){

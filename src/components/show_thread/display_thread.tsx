@@ -70,12 +70,15 @@ export default class showThread extends React.Component<IProps, IState> {
   }
 
   public componentWillMount() {
+    const { route } = this.props;
+    const path = '/r/' + route.split('/')[2] + '/' + route.split('/')[4];
     this.props.fetchThread();
-    this.props.openThread(this.props.threadList[0].data.permalink);
+    this.props.openThread(path);
   };
 
 
   public render() {
+    console.log('ROUTE', this.props.route);
     const { thread_replies, original_post } = this.props;
     console.log('REPLIES', thread_replies);
     console.log("OP", original_post);
