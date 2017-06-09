@@ -6,7 +6,6 @@ const CLIENT_ID = 'HqefUk8PG3nnvSwbHR2XKd_l3bc';
 
 export const SEARCH_SUBREDDITS = 'search_subreddits';
 export const HIDE_SEARCHPANEL = 'hide_searchpanel';
-export const AUTH = 'authorization';
 export const SAVE_SUBREDDIT = 'save_subreddit';
 export const REMOVE_SAVED_SUBREDDIT = 'remove_subreddit';
 
@@ -27,15 +26,6 @@ export const hideSearchpanel = (isVisible: boolean) => {
     };
 };
 
-export const authorization = (config: Object) => {
-    const url = `${ROOT_URL}/api/v1/access_token`;
-    const request = axios.post(url, config);
-    return{
-        payload:request,
-        type: AUTH,
-    };
-
-};
 
 export const saveSubreddit = (subreddit: Object) =>  {
     return{

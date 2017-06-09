@@ -86,6 +86,7 @@ export default class showThread extends React.Component<IProps, IState> {
     console.log('REPLIES', thread_replies);
     console.log("OP", original_post);
 
+
     if(original_post)
     {
       let post = original_post.children["0"].data;
@@ -98,7 +99,7 @@ export default class showThread extends React.Component<IProps, IState> {
             <Markdown source={post.selftext} />
           </div>
           {
-            this.props.thread_replies && this.props.thread_replies.length === 0 && <LoaderComponent />
+            thread_replies && thread_replies.length === 0 && <LoaderComponent />
           }
           <div className="thread-replies-container col-xs-12">
             {thread_replies &&
@@ -107,6 +108,7 @@ export default class showThread extends React.Component<IProps, IState> {
             })}
           </div>
         </div>
+
       );
     }
 
