@@ -2,6 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {openThread, fetchThread} from "../../actions/display_subreddit";
 import {LoaderComponent} from "../common/loader";
+import {RenderMedia} from "../common/render_media";
 const Markdown = require('react-remarkable');
 
 interface IProps {
@@ -41,7 +42,8 @@ export default class showThread extends React.Component<IProps, IState> {
 
   private renderRepliestoReplies(reply: any) {
     return(
-      <div className="thread-reply col-xs-12">
+      <div className="thread-reply col-xs-12" key={reply.data.id}>
+        <h5><Markdown source={reply.data.author} /></h5>
         <Markdown source={reply.data.body} />
         {reply.data.replies &&
         reply.data.replies.data.children.map((replies:any) =>{
@@ -54,9 +56,9 @@ export default class showThread extends React.Component<IProps, IState> {
   }
 
   private renderReplies(reply: any) {
-    // console.log(reply.data.replies);
     return(
-      <div className="thread-panel col-xs-12">
+      <div className="thread-panel thread-reply col-xs-12" key={reply.data.id}>
+        <h5><Markdown source={reply.data.author} /></h5>
         <Markdown source={reply.data.body} />
         {reply.data.replies &&
         reply.data.replies.data.children.map((replies:any) =>{
@@ -70,25 +72,30 @@ export default class showThread extends React.Component<IProps, IState> {
   }
 
   public componentWillMount() {
-    const { route } = this.props;
+    const { route, fetchThread, openThread } = this.props;
+
+    fetchThread();
+
     const path = '/r/' + route.split('/')[2] + '/' + route.split('/')[4];
-    this.props.fetchThread();
-    this.props.openThread(path);
+    openThread(path);
   };
 
 
   public render() {
-    console.log('ROUTE', this.props.route);
     const { thread_replies, original_post } = this.props;
     console.log('REPLIES', thread_replies);
     console.log("OP", original_post);
 
     if(original_post)
     {
+      let post = original_post.children["0"].data;
       return(
         <div className="container">
           <div className="thread-panel col-xs-12">
-            <Markdown source={original_post.children["0"].data.selftext} />
+            <h2><Markdown source={post.title} /></h2>
+            <h5><Markdown source={post.author} /></h5>
+            <RenderMedia media={post} />
+            <Markdown source={post.selftext} />
           </div>
           {
             this.props.thread_replies && this.props.thread_replies.length === 0 && <LoaderComponent />
@@ -102,6 +109,7 @@ export default class showThread extends React.Component<IProps, IState> {
         </div>
       );
     }
+
     return(
       <div className="container">
         <LoaderComponent />

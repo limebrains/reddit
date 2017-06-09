@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import {LoaderComponent} from "../common/loader";
 import {Link} from "react-router";
 import {openSubreddit, fetchingSubreddit} from "../../actions/display_subreddit";
+import {RenderMedia} from "../common/render_media";
 const Markdown = require('react-remarkable');
+
 
 interface IProps {
   threads?: any[];
@@ -67,39 +69,12 @@ export default class DisplaySubreddit extends React.Component<IProps, {}> {
     );
   }
 
-  private renderMedia = (media: any) => {
-    const extension = media.url.split('.')[media.url.split('.').length - 1];
-    if (extension === 'gif') {
-      return <img src={media.url} alt=""/>
-    }
-    if (extension === 'gifv') {
-      setTimeout(() => {
-        (window as any).imgurEmbed.createIframe();
-      }, 1000);
-      const dataId = media.url.split('.com/')[1].split('.gif')[0];
-      return (<blockquote className="imgur-embed-pub" lang="en" data-id={dataId}>
-        <a href={`//imgur.com/${dataId}`}>Open Location</a></blockquote>);
-    }
-
-    switch(media.post_hint){
-      case "image":
-        return <img src={media.url} />;
-      case "rich:video":
-        return <div className="giphy-shit">
-          <iframe src={media.url} frameBorder="0" className="giphy-iframe-props" allowFullScreen>
-          </iframe></div>;
-      default:
-        return;
-    }
-  }
-
   private renderThreads = (thread: any) => {
     return (
       <div className="thread-panel col-xs-12" key={thread.data.id}>
         <h2><Markdown source={thread.data.title} /></h2>
         <a href={thread.data.url}><h5>{thread.data.domain}</h5></a>
-        {this.renderMedia(thread.data)}
-        {/*<Markdown source={thread.data.media_embed.content} />*/}
+        <RenderMedia media={thread.data} />
         <span>
           <Markdown source={thread.data.selftext.substring(0, 266)} />
         </span>
