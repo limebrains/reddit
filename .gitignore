@@ -6,7 +6,7 @@ logs
 pids
 *.pid
 *.seed
-.idea
+.idea/
 # Coverage directory used by tools like istanbul
 coverage
 
@@ -23,3 +23,6 @@ manifest.json
 node_modules
 /assets
 !/src/routes.tsx
+
+
+
