@@ -1,8 +1,6 @@
 import axios from 'axios';
-import {subreddits} from "../reducers/reducer_subreddits_search";
 
 const ROOT_URL = 'https://www.reddit.com';
-const CLIENT_ID = 'HqefUk8PG3nnvSwbHR2XKd_l3bc';
 
 export const SEARCH_SUBREDDITS = 'search_subreddits';
 export const HIDE_SEARCHPANEL = 'hide_searchpanel';
