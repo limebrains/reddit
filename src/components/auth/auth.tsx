@@ -1,18 +1,22 @@
 import * as React from 'react';
 import {connect} from "react-redux";
-import {browserHistory} from "react-router";
+import {authorization} from "../../actions/authentication";
 
 interface IProps {
+  authorization?: any;
+  request_data?: string;
 }
 
 interface IState {
 }
 const mapStateToProps = (state: any): IProps => {
   return {
-  };
+    request_data: state.routing.locationBeforeTransitions.search,
+
+  }
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {authorization};
 
 
 @(connect(mapStateToProps, mapDispatchToProps) as any)
@@ -26,7 +30,9 @@ export default class AuthPage extends React.Component<IProps, IState> {
   }
 
   public componentDidMount() {
-    browserHistory.push('/');
+    const code = this.props.request_data.split('&code=')[1];
+    this.props.authorization(code);
+
   }
 
   public render() {
