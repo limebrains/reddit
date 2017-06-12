@@ -14,9 +14,10 @@ import config from './config';
 
 /* Components */
 import { NotFound } from './components';
-import IndexPage from "./components/index_search_page/layout";
+import IndexPage from "./components/navbar/layout";
 import DisplaySubreddit from "./components/display_subreddit/open_subreddit";
 import showThread from "./components/show_thread/display_thread";
+import AuthPage from "./components/auth/auth";
 
 
 /* Routes */
@@ -25,12 +26,13 @@ const Routes: StatelessComponent<any> = (): any => {
   return (
     <Provider store={ store }>
       <Router history={ history }>
-          <Route path={urlPrefix} component={ IndexPage }>
-              <IndexRoute component= {DisplaySubreddit} />
-            <Route path="/r/:subreddit/" component={DisplaySubreddit} />
-              <Route path="/r/:subreddit/thread/:id/" component={showThread} />
-          </Route>
-          <Route path="*" component={ NotFound } />
+        <Route path={urlPrefix} component={ IndexPage }>
+          <IndexRoute component= {DisplaySubreddit} />
+          <Route path="/r/:subreddit/" component={DisplaySubreddit} />
+          <Route path="/r/:subreddit/thread/:id/" component={showThread} />
+          <Route path="/auth" component={AuthPage} />
+        </Route>
+        <Route path="*" component={ NotFound } />
 
       </Router>
     </Provider>

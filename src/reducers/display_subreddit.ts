@@ -1,5 +1,4 @@
 import {DISPLAY_SUBREDDIT, FETCH_SUBREDDIT, DISPLAY_THREAD, FETCH_THREAD} from "../actions/display_subreddit";
-import {SAVE_SUBREDDIT} from "../actions/searching_page";
 
 interface ISubreditState {
   threads: any;

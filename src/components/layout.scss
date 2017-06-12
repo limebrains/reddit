@@ -33,6 +33,10 @@ $linkhover: #94c;
   }
 }
 
+.navbar {
+  background: rgba(200, 200, 255, 0.4);
+}
+
 body {
   background: #eee !important;
   -ms-touch-action: none;
@@ -148,6 +152,21 @@ ul {
 .search-results {
   overflow-y: scroll;
   max-height: 30vh;
+}
+
+.where-you-are-bar{
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+  margin-right: 0;
+  text-align: center;
+  font-size: 25px;
+  padding: 15px 15px 15px 15px;
+}
+
+.auth-urself {
+  text-align: right;
 }
 
 

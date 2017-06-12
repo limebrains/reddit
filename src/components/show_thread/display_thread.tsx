@@ -84,8 +84,6 @@ export default class showThread extends React.Component<IProps, IState> {
   public render() {
     const { thread_replies, original_post } = this.props;
     console.log('REPLIES', thread_replies);
-    console.log("OP", original_post);
-
 
     if(original_post)
     {
