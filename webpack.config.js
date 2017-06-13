@@ -30,9 +30,9 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
-          $: "jquery",
-          jQuery: "jquery"
-      })
+      $: "jquery",
+      jQuery: "jquery"
+    })
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
@@ -42,7 +42,7 @@ module.exports = {
     contentBase: 'assets/',
     host: '0.0.0.0',
     port: 8000,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   module: {
     rules: [

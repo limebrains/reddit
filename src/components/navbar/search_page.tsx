@@ -5,6 +5,8 @@ import ButtonComponent from "./visibility_button";
 import {Link} from "react-router";
 import {Config} from "../../constants";
 import {connect} from "react-redux";
+import {getUserName} from "../../actions/account";
+import TopBar from "./top_bar";
 const CSSTransitionGroup = require('react-transition-group/CSSTransitionGroup');
 
 interface IProps {
@@ -59,25 +61,14 @@ export default class Navbar extends React.Component<IProps, {}> {
   };
 
   public render() {
-    const {
-      ROOT_API_URL,
-      CLIENT_ID,
-      REDIRECT_URI
-    } = Config;
-    const STATE = '12345';
-    const authLink = `${ROOT_API_URL}authorize?client_id=${CLIENT_ID}&response_type=code&state=${STATE}&redirect_uri=${REDIRECT_URI}&duration=permanent&scope=identity`;
+
     const gridType = this.props.isVisible ?  "top-panel-max-height col-xs-8"  : "only-first-row";
     const panel_width = this.props.isVisible ? '' : `${this.props.quanityOfSavedSubreddits*160}px`;
+
     return (
       <div className="navbar">
         <div className="row">
-          <div className="auth-top col-xs-12">
-            <div className="auth-urself">
-              <a href={authLink}>
-                Auth yourself with your Reddit account!
-              </a>
-            </div>
-          </div>
+          <TopBar />
         </div>
         <div className="page-content top-panel-max-height">
           <div className="row">

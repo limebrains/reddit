@@ -12,12 +12,15 @@ const authReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case AUTH:
       console.log(action.payload);
-      return {...state, token: action.payload.data};
+      return {
+        ...state,
+        token: action.payload.data.access_token
+      };
     default:
       return state;
 
   }
-}
+};
 
 export {
   authReducer,

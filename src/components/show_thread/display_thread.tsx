@@ -31,7 +31,7 @@ const mapStateToProps = (state: any): IProps => {
 const mapDispatchToProps = {openThread, fetchThread};
 
 @(connect(mapStateToProps, mapDispatchToProps) as any)
-export default class showThread extends React.Component<IProps, IState> {
+export default class ShowThread extends React.Component<IProps, IState> {
 
   constructor(props: any) {
     super(props);
