@@ -7,8 +7,8 @@ export const DISPLAY_THREAD = 'display_thread';
 export const FETCH_THREAD = 'fetch_thread';
 
 
-export const openSubreddit = (text: string) => {
-  const url = `${ROOT_URL}/${text}.json`;
+export const openSubreddit = (subredditName: string) => {
+  const url = `${ROOT_URL}/${subredditName}.json`;
   const request = axios.get(url);
 
   return {
@@ -24,8 +24,8 @@ export const fetchingSubreddit = () => {
   }
 };
 
-export const openThread = (text:string) => {
-  const url = `${ROOT_URL}${text}.json`;
+export const openThread = (threadName:string) => {
+  const url = `${ROOT_URL}${threadName}.json`;
   const request = axios.get(url);
 
   return {
@@ -34,7 +34,8 @@ export const openThread = (text:string) => {
   }
 };
 
-export const fetchThread = (text:string) => {
+export const fetchThread = () => {
+
   return {
     type: FETCH_THREAD
   }

@@ -59,12 +59,7 @@ export default class SearchSubreddits extends React.Component<IProps, IState> {
 
   public handleChange = (event: any): void => {
     const value = event.target.value;
-    this.setState(
-      {
-        ...this.state,
-        input: value,
-      }
-    );
+    this.setState({...this.state, input: value});
     this.props.searchForSubreddits(value);
   };
 

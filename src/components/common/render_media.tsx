@@ -14,22 +14,25 @@ export class RenderMedia extends React.Component<IProps, any> {
       const extension = media.url.split('.')[media.url.split('.').length - 1];
       if (media.url.indexOf('gfycat') !== -1) {
         return(
-          <iframe src={`https://thumbs.${media.url.split('://')[1]}-mobile.mp4`}
-                  scrolling='no' width='640' height='360'>
+          <iframe
+            src={`https://thumbs.${media.url.split('://')[1]}-mobile.mp4`}
+            scrolling='no'
+            width='640'
+            height='360'>
 
           </iframe>
         );
       }
       if (media.url.indexOf('youtube') !== -1) {
-        console.log('SPLIT', media.url.split('watch?v='));
-
         let link = `https://www.youtube.com/embed/${media.url.split('watch?v=')[1]}`;
         if (media.url.indexOf('&') !== -1){
           link = link.split('&')[0];
         }
         return(
-          <iframe width="560" height="315"
-                  src={link} />
+          <iframe
+            width="560"
+            height="315"
+            src={link} />
         );
       }
 
@@ -40,8 +43,10 @@ export class RenderMedia extends React.Component<IProps, any> {
         }
         return(
           <div className="">
-            <iframe width="560" height="315"
-                    src={link} />
+            <iframe
+              width="560"
+              height="315"
+              src={link} />
           </div>
         );
       }
@@ -65,7 +70,12 @@ export class RenderMedia extends React.Component<IProps, any> {
           return <img src={media.url} />;
         case "rich:video":
           return <div className="giphy-shit">
-            <iframe src={media.url} frameBorder="0" className="giphy-iframe-props" allowFullScreen>
+            <iframe
+              src={media.url}
+              frameBorder="0"
+              className="giphy-iframe-props"
+              allowFullScreen
+            >
             </iframe></div>;
         default:
           return null;

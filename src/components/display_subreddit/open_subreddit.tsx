@@ -15,7 +15,7 @@ interface IProps {
   openThread?: any;
   openSubreddit?: any;
   fetchingSubreddit?: any;
-  route?: any;
+  route?: string;
 }
 
 const mapStateToProps = (state: any): IProps => {
@@ -39,6 +39,10 @@ export default class DisplaySubreddit extends React.Component<IProps, {}> {
   public componentWillMount() {
     this.props.fetchingSubreddit();
     this.props.openSubreddit(this.props.route);
+  }
+
+  public componentWillUnmount() {
+    // document.body.removeChild(script);
   }
 
   public componentDidMount() {

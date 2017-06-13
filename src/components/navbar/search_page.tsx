@@ -1,24 +1,24 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
 import SearchSubreddits from './searching';
 import SavedSubreddits from './show_saved_subreddits';
 import ButtonComponent from "./visibility_button";
 import {Link} from "react-router";
-import {ROOT_API_URL, CLIENT_ID, REDIRECT_URI} from "../../constants";
+import {Config} from "../../constants";
+import {connect} from "react-redux";
 const CSSTransitionGroup = require('react-transition-group/CSSTransitionGroup');
 
 interface IProps {
   dispatch?: any;
   isVisible?: boolean;
   quanityOfSavedSubreddits?: number;
-  whereYouAre?: string;
+  currentSubredditLocation?: string;
 }
 
 const mapStateToProps = (state: any): IProps => {
   return {
     isVisible: state.subreddits.isVisible,
     quanityOfSavedSubreddits: state.subreddits.savedSubreddits.length,
-    whereYouAre: state.routing.locationBeforeTransitions.pathname,
+    currentSubredditLocation: state.routing.locationBeforeTransitions.pathname,
   };
 };
 
@@ -42,7 +42,7 @@ export default class Navbar extends React.Component<IProps, {}> {
   };
 
   public printLocation = () => {
-    const locationName = this.props.whereYouAre.split('/');
+    const locationName = this.props.currentSubredditLocation.split('/');
     if (locationName.length <= 2)
     {
       return 'Reddit Front Page';
@@ -59,8 +59,13 @@ export default class Navbar extends React.Component<IProps, {}> {
   };
 
   public render() {
+    const {
+      ROOT_API_URL,
+      CLIENT_ID,
+      REDIRECT_URI
+    } = Config;
     const STATE = '12345';
-    const authLink = `${ROOT_API_URL}authorize?client_id=${CLIENT_ID}&response_type=code&state=${STATE}&redirect_uri=${REDIRECT_URI}&duration=permanent&scope=identity`
+    const authLink = `${ROOT_API_URL}authorize?client_id=${CLIENT_ID}&response_type=code&state=${STATE}&redirect_uri=${REDIRECT_URI}&duration=permanent&scope=identity`;
     const gridType = this.props.isVisible ?  "top-panel-max-height col-xs-8"  : "only-first-row";
     const panel_width = this.props.isVisible ? '' : `${this.props.quanityOfSavedSubreddits*160}px`;
     return (
@@ -69,7 +74,7 @@ export default class Navbar extends React.Component<IProps, {}> {
           <div className="auth-top col-xs-12">
             <div className="auth-urself">
               <a href={authLink}>
-                Auth yourself with Leddit account!
+                Auth yourself with your Reddit account!
               </a>
             </div>
           </div>

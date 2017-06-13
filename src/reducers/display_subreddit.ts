@@ -11,10 +11,11 @@ const initialState: ISubreditState = {
 const displaySubreddit = (state = initialState, action: any) => {
   switch (action.type) {
     case DISPLAY_SUBREDDIT:
-      console.log(action.payload.data.data.children);
-      return {...state, threads: action.payload.data.data.children};
+      return {...state,
+        threads: action.payload.data.data.children};
     case FETCH_SUBREDDIT:
-      return {...state, threads: []};
+      return {...state,
+        threads: []};
     case FETCH_THREAD:
       return {...state,
         original_post: [],
