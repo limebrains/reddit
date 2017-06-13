@@ -33,7 +33,6 @@ const Routes: StatelessComponent<any> = (): any => {
           <Route path="/auth" component={AuthPage} />
         </Route>
         <Route path="*" component={ NotFound } />
-
       </Router>
     </Provider>
   );

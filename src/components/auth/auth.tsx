@@ -12,7 +12,6 @@ interface IState {
 const mapStateToProps = (state: any): IProps => {
   return {
     request_data: state.routing.locationBeforeTransitions.search,
-
   }
 };
 
@@ -38,7 +37,7 @@ export default class AuthPage extends React.Component<IProps, IState> {
   public render() {
     return(
       <div>
-        Thanks you for login in, switching to main page in 3, 2, 1...
+        Thanks you for authentication, switching to main page in 3, 2, 1...
       </div>
     );
 

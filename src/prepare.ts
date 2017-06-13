@@ -37,11 +37,9 @@ function configureStore(initialState: any): any {
   if (hot) {
     // Enable Webpack hot module replacement for reducers
     hot.accept('./reducers', () => {
-      const titleReducer = require('./reducers/titles');
       const subreddits = require('./reducers/reducer_subreddits_search');
       const nextReducer = combineReducers({
         routing: routerReducer,
-        titleReducer,
         subreddits,
       });
       createdStore.replaceReducer(nextReducer);
