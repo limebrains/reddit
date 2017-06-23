@@ -8,11 +8,16 @@ const Markdown = require('react-remarkable');
 interface IProps {
   fetchThread?: any;
   threadList?: any;
-  threadKey?: any;
+  threadKey?: string;
   openThread?: any;
   thread_replies?: any;
-  route?: any;
+  route?: string;
   original_post?: any;
+}
+
+interface IReplyData {
+  author?: string;
+  body?: string;
 }
 
 interface IState {
@@ -40,11 +45,20 @@ export default class ShowThread extends React.Component<IProps, IState> {
     };
   }
 
+  private renderReplyBody(reply: IReplyData){
+    return(
+      <div className="reply-body">
+        <h5><Markdown source={reply.author} /></h5>
+        <Markdown source={reply.body} />
+      </div>
+    );
+  }
+
   private renderRepliestoReplies(reply: any) {
     return(
       <div className="thread-reply col-xs-12" key={reply.data.id}>
-        <h5><Markdown source={reply.data.author} /></h5>
-        <Markdown source={reply.data.body} />
+        {this.renderReplyBody(reply.data)}
+
         {reply.data.replies &&
         reply.data.replies.data.children.map((replies:any) =>{
           return this.renderRepliestoReplies(replies)
@@ -57,9 +71,9 @@ export default class ShowThread extends React.Component<IProps, IState> {
 
   private renderReplies(reply: any) {
     return(
+
       <div className="thread-panel thread-reply col-xs-12" key={reply.data.id}>
-        <h5><Markdown source={reply.data.author} /></h5>
-        <Markdown source={reply.data.body} />
+        {this.renderReplyBody(reply.data)}
         {reply.data.replies &&
         reply.data.replies.data.children.map((replies:any) =>{
           return this.renderRepliestoReplies(replies)
@@ -68,7 +82,18 @@ export default class ShowThread extends React.Component<IProps, IState> {
       </div>
 
     );
+  }
 
+  private renderOriginalPost (original_post: any) {
+    let post = original_post.children[0].data;
+    return(
+      <div className="thread-panel col-xs-12">
+        <h2><Markdown source={post.title} /></h2>
+        <h5><Markdown source={post.author} /></h5>
+        <RenderMedia media={post} />
+        <Markdown source={post.selftext} />
+      </div>
+    );
   }
 
   public componentWillMount() {
@@ -86,25 +111,31 @@ export default class ShowThread extends React.Component<IProps, IState> {
 
     if(original_post)
     {
-      let post = original_post.children["0"].data;
+      if(thread_replies){
+        return(
+          <div className="container">
+            {this.renderOriginalPost(original_post)}
+            {
+              thread_replies && thread_replies.length === 0 && <LoaderComponent />
+            }
+            <div className="thread-replies-container col-xs-12">
+              {thread_replies &&
+              thread_replies.map((replies: any) => {
+                return this.renderReplies(replies)
+              })}
+            </div>
+          </div>
+        );
+      }
+
       return(
         <div className="container">
-          <div className="thread-panel col-xs-12">
-            <h2><Markdown source={post.title} /></h2>
-            <h5><Markdown source={post.author} /></h5>
-            <RenderMedia media={post} />
-            <Markdown source={post.selftext} />
-          </div>
-          {
-            thread_replies && thread_replies.length === 0 && <LoaderComponent />
-          }
+          {this.renderOriginalPost(original_post)}
           <div className="thread-replies-container col-xs-12">
-            {thread_replies &&
-            thread_replies.map((replies: any) => {
-              return this.renderReplies(replies)
-            })}
+            There is no replies to this thread.
           </div>
         </div>
+
 
       );
     }

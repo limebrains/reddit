@@ -5,7 +5,22 @@ export const DISPLAY_SUBREDDIT = 'display_subreddit';
 export const FETCH_SUBREDDIT = 'fetch_subreddit';
 export const DISPLAY_THREAD = 'display_thread';
 export const FETCH_THREAD = 'fetch_thread';
+export const LOAD_NEW_PAGE = 'load_new_page';
+export const OPEN_NEW_PAGE = 'open_new_page';
 
+export const openNewPage = (adress: string) => {
+
+  const url = `${ROOT_URL}/${adress}`;
+  const request = axios.get(url);
+
+  return {
+    payload: request,
+    type: OPEN_NEW_PAGE,
+  };
+
+
+
+}
 
 export const openSubreddit = (subredditName: string) => {
   const url = `${ROOT_URL}/${subredditName}.json`;
@@ -17,6 +32,11 @@ export const openSubreddit = (subredditName: string) => {
   };
 };
 
+export const loadNewPage = () => {
+  return {
+    type: LOAD_NEW_PAGE,
+  }
+};
 
 export const fetchingSubreddit = () => {
   return {
