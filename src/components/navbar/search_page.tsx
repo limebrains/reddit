@@ -93,12 +93,9 @@ export default class Navbar extends React.Component<IProps, {}> {
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="where-you-are-bar">
+        <div className="row where-you-are-bar">
             {this.printLocation()}
           </div>
-        </div>
-
       </div>
     );
   }

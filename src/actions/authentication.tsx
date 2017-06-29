@@ -2,6 +2,7 @@ import axios from 'axios';
 import {Config} from "../constants";
 
 export const AUTH = 'auth';
+export const REFRESH_TOKEN = 'refresh_token';
 const {
   REDIRECT_URI,
   ROOT_API_URL,
@@ -26,5 +27,21 @@ export const authorization = (code: string) => {
   return {
     payload: token,
     type: AUTH,
+  }
+};
+
+export const refreshToken= (refreshToken: string) => {
+
+    const token = axios.post(ROOT_API_URL + 'access_token', {
+    auth: {
+      grant_type: 'refresh_token',
+      password: refreshToken,
+    }
+  });
+
+
+  return {
+    payload: 1,
+    type: REFRESH_TOKEN,
   }
 };
